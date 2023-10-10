@@ -1,0 +1,15 @@
+.app {
+    margin: 0;
+    color: rgb(23, 23, 23);
+    display: grid;
+}
+
+header {
+    font-size: 36px;
+    font-weight: bolder;
+    color: rgb(84, 148, 226);
+    background-color: aquamarine;
+    display: grid;
+    place-items: center;
+    height: 100px;
+}
