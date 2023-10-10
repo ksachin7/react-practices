@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS-Form</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <h1>Contact-us</h1>
+
+    <form action="" id="contact-form">
+      <label for="name"> Name: </label>
+      <input
+        type="text"
+        class="name"
+        name="name"
+        placeholder="Enter Full Name"
+        required
+      />
+      <label for="age"> Age: </label>
+      <input
+        type="number"
+        class="age"
+        name="age"
+        placeholder="Enter age"
+        required
+      />
+      <label for="email"> Email: </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter Your Email"
+        required
+      />
+      <label for="message">Message: </label>
+      <textarea name="message" id="message" cols="30" rows="10"></textarea>
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- displaying data -->
+    <div id="displayData"></div>
+    s
+    <script>
+      const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // email validation
+        function validaateEmail() {
+          const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4} $/;
+        }
+        const emailInput = document.getElementById("email");
+
+        emailInput.addEventListener("blur", function () {
+          const email = emailInput.value;
+
+          if (validaateEmail(email)) {
+            emailInput.classList.remove("invalid");
+            emailInput.classList.add("valid");
+          } else {
+            emailInput.classList.remove("valid");
+            emailInput.classList.add("invalid");
+          }
+        });
+
+        const formData = new FormData(e.target);
+
+        // Extracting data
+        const name = formData.get("name");
+        const age = formData.get("age");
+        const email = formData.get("email");
+        const message = formData.get("message");
+
+        if (age > 25 && age < 50) {
+          const displayData = `
+                <h2>Contact Us:</h2>
+                <p><strong>Name: </strong>${name}</p>
+                <p><strong>Age: </strong>${age}</p>
+                <p><strong>Email: </strong>${email}</p>
+                <p><strong>Message: </strong>${message}</p>
+                `;
+
+          document.getElementById("displayData").innerHTML = displayData;
+        } else {
+          alert("Age must be > 25 and < 50");
+        }
+      };
+
+      const form = document.getElementById("contact-form");
+      form.addEventListener("submit", handleSubmit);
+    </script>
+  </body>
+</html>
