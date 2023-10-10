@@ -1,0 +1,35 @@
+.poster-sm {
+    width: 100%;
+    object-fit: cover;
+}
+
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 5px 0;
+    // overflow-y: scroll;
+    // max-height: calc(100vh - 190px);
+}
+
+.list-item {
+    display: flex;
+    list-style: none;
+    padding: 14px 21px;
+    border-bottom: 1px solid #eeeeee27;
+
+}
+
+.movie-info {
+    padding-left: 10px;
+    max-width: 300px;
+}
+
+.movie-info h4,
+p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.movie-info p {
+    font-size: 0.91em;
+}

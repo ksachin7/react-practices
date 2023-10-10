@@ -1,0 +1,69 @@
+#root {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body {
+  display: grid;
+  place-items: center;
+
+  .err {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .grid-container {
+    // background-color: rgba(12, 12, 17, 0.622);
+    // margin: 21px 0px;
+    width: 100%;
+    max-width: fit-content;
+    border-radius: 8px;
+    // min-height: 70%;
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: center;
+    margin: 27px;
+
+    // Uncomment the following lines to enable grid layout
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    @media screen and (max-width: 945px) {
+      // Adjust grid container styles for smaller screens
+      display: flex;
+      flex-direction: column; // Switch to a single column layout
+      align-items: center;
+      gap: 10px; // Add gap between items in the single column
+
+      // Uncomment the following lines to enable grid layout for smaller screens
+      // display: grid;
+      // grid-template-rows: auto;
+      // grid-template-columns: 1fr;
+    }
+
+    // aside {
+    //   border-radius: 8px 0px 0 0px;
+    // }
+
+    aside,
+    .movie-details-container {
+      background-color: rgba(12, 12, 17, 0.472);
+      width: 100%;
+      max-width: 400px;
+      max-height: calc(100vh - 170px);
+      border-radius: 8px;
+      overflow: auto;
+    }
+
+    // .movie-details-container {
+    //   // margin-left: 25px;
+    //   border-radius: 0 8px 0 0;
+    // }
+  }
+}
