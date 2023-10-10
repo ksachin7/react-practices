@@ -1,0 +1,99 @@
+.nav {
+    display: flex;
+    // place-items: center;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #490474;
+    /* Add these properties to position the navbar at the top left */
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    width: 100%;
+    max-width: 900px;
+    // grid-template-columns: 1fr 2fr 1fr;
+    // z-index: 1;
+    // border: 1px solid transparent;
+    // border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* Paper-like shadow */
+
+    @media screen and (max-width: 600px) {
+        max-width: 100%;
+
+
+        .logo {
+            font-size: 14px !important;
+        }
+
+        .result-txt {
+            display: none;
+        }
+
+    }
+
+    .logo {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        // padding: 0 0.5em;
+        position: relative;
+
+        &:hover {
+            filter: drop-shadow(0 0 2em #646cffaa);
+        }
+
+        // &::before {
+        //     content: "find your";
+        //     font-family: cursive;
+        //     font-size: small;
+        //     position: absolute;
+        //     top: 11%;
+        //     left: 36%;
+        //     transform: translate(-50%, -50%) rotate(-30deg);
+        //     // background-color: rgba(255, 255, 255, 0.8);
+        //     padding: 5px 10px;
+        //     border-radius: 5px;
+        // }
+    }
+
+    .search {
+        width: 100%;
+        max-width: 50%;
+        position: relative;
+        margin: 5px;
+        background-color: #19001f85;
+
+        input {
+            width: 100%;
+            color: rgba(245, 245, 245, 0.717);
+            padding: 10px 21px;
+            font-size: 16px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background-color: transparent;
+            transition: input 0.3s;
+
+            &:focus {
+                // border: 2px solid #120012be;
+                outline: none;
+                filter: drop-shadow(0 0 2em #120012be);
+            }
+        }
+
+        .clear {
+            color: lightgrey;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+
+            &:focus {
+                outline: none;
+                border: none;
+                color: #f00;
+            }
+        }
+    }
+}
