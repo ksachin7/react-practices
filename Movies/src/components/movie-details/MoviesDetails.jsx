@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import StarRatings from "./StarRatings";
 import styled from "styled-components";
 import noimage from "../../assets/images/no-image.jpeg";
+import { LoadingSpinner } from "../common/Loading";
 
 // Define the styled component for the "Add to Watchlist" button
 const AddToWatchButton = styled.button`
@@ -23,6 +24,7 @@ const AddToWatchButton = styled.button`
 
 function MoviesDetails({ selectedId, onAddToWatch, onCloseMovie, watched }) {
   const [movie, setMovie] = useState({});
+  const [loading, setLoading] = useState(false);
   const [userRatings, setUserRatings] = useState(0);
   // const [addToWatched, setAddToWatched] = useState(false);
   // const selectedMovie = movies.find((movie) => movie.imdbID === selectedId) || null;
@@ -46,7 +48,7 @@ function MoviesDetails({ selectedId, onAddToWatch, onCloseMovie, watched }) {
     const KEY = "5841f519";
     const fetchMovieDetails = async () => {
       try {
-        // setLoading(true);
+        setLoading(true);
         const res = await fetch(
           `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
         );
@@ -64,7 +66,7 @@ function MoviesDetails({ selectedId, onAddToWatch, onCloseMovie, watched }) {
         // setError("Network error or API request failed."); // Handle network or API errors
         // console.error(err);
       } finally {
-        // setLoading(false);
+        setLoading(false);
       }
     };
 
@@ -97,54 +99,63 @@ function MoviesDetails({ selectedId, onAddToWatch, onCloseMovie, watched }) {
   //   setAddToWatched(false);
   // }, [selectedId]);
 
-  // TODO: fix link title
-
   const isAddedToWatched = watched.some(movie => movie.imdbID === selectedId);
   // const isAddedToWatched = watched.hasOwnProperty(selectedId);
 
+  // fixing card-overflow issue by adding classname on overflowed
+  // const cardInfoRef = useRef(null);
+  // useEffect(() => {
+  //   if (cardInfoRef.current) {
+  //     if (cardInfoRef.current.scrollHeight > cardInfoRef.current.clientHeight) {
+  //       cardInfoRef.current.classList.add("overflowed");
+  //     }
+  //   }
+  // }, []);
+
   return (
-    <div id='movie-details'>
-      <button id='back-btn' onClick={onCloseMovie}>
-        ←
-      </button>
-      <div className='movie-card'>
-        <img
-          src={movie.Poster == "N/A" ? noimage : movie.Poster}
-          alt={`${title} poster`}
-        />
-        <div className='card-info'>
-          <h2 className="title">{title}</h2>
-          <div className="crd-details">
-            <p>
-              {released} &bull; {runtime}
-            </p>
-            <p>{lang} &bull; {type}</p>
-            <p>
-              <span>⭐️ </span>
-              {imdbRating} IMDB Rating
-            </p>
-            <p>{genre}</p>
+    loading ? (<LoadingSpinner />) : (
+      <div id='movie-details'>
+        <button id='back-btn' onClick={onCloseMovie}>
+          ←
+        </button>
+        <div className='movie-card'>
+          <img
+            src={movie.Poster == "N/A" ? noimage : movie.Poster}
+            alt={`${title} poster`}
+          />
+          <div className='card-info'>
+            <h2 className="title">{title}</h2>
+            <div className="crd-details">
+              <p>
+                {released} &bull; {runtime}
+              </p>
+              <p>{lang} &bull; {type}</p>
+              <p>
+                <span>⭐️ </span>
+                {imdbRating} IMDB Rating
+              </p>
+              <p>{genre}</p>
+            </div>
+
           </div>
-
+        </div>
+        <div className="details">
+          <div className="buttons">
+            <StarRatings imdbID={selectedId} onSetRatings={setUserRatings} />
+            {isAddedToWatched ?
+              (<strong>Added to watched!</strong>)
+              : (
+                <AddToWatchButton id={`add-btn-${movie.imdbID}`} onClick={handleAddToWatch}>Add to watched</AddToWatchButton>
+              )}
+          </div>
+          <div className="movie-text">
+            <p> <>{plot}</></p><br />
+            <p><strong>{actors}</strong></p><br />
+            <p><strong>Directed by: </strong>{director}</p>
+          </div>
         </div>
       </div>
-      <div className="details">
-        <div className="buttons">
-          <StarRatings imdbID={movie.imdbID} onSetRatings={setUserRatings} />
-          {isAddedToWatched ?
-            (<strong>Added to watched!</strong>)
-            : (
-              <AddToWatchButton id={`add-btn-${movie.imdbID}`} onClick={handleAddToWatch}>Add to watched</AddToWatchButton>
-            )}
-        </div>
-        <div className="movie-text">
-          <p> <>{plot}</></p><br />
-          <p><strong>{actors}</strong></p><br />
-          <p><strong>Directed by: </strong>{director}</p>
-        </div>
-      </div>
-
-    </div>
+    )
   );
 }
 
@@ -152,7 +163,7 @@ MoviesDetails.propTypes = {
   selectedId: PropTypes.string.isRequired,
   onAddToWatch: PropTypes.func.isRequired,
   onCloseMovie: PropTypes.func.isRequired,
-  watched: PropTypes.object
+  watched: PropTypes.array
 };
 
 export default MoviesDetails;

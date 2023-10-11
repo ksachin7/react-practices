@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../assets/scss/App.scss";
-import Loading from "./common/Loading";
+import { Loading } from "./common/Loading";
 import Navbar from "./common/Navbar";
 import MoviesDetails from "./movie-details/MoviesDetails";
 import MoviesList from "./movie-list/MoviesList";
@@ -58,14 +58,14 @@ function App() {
             />
           </aside>
           <div className='movie-details-container'>
-            {selectedId ?
+            {selectedId ? (
               <MoviesDetails
                 selectedId={selectedId}
                 onAddToWatch={handleWatched}
                 watched={watched}
                 onCloseMovie={handleCloseMovie}
               />
-              :
+            ) : (
               <>
                 <WatchedSummary watched={watched} />
                 <WatchedList
@@ -74,6 +74,7 @@ function App() {
                   onRemove={handleRemoveWatched}
                 />
               </>
+            )
             }
           </div>
         </div>

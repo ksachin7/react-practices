@@ -52,7 +52,7 @@ const RemoveButton = styled.button`
   padding: 0 0 3px 1px;
   width: 24px; 
   height: 24px; 
-  background-color: rgba(10, 10, 10, 0.9);
+  background-color: rgba(10, 10, 10, 0.7);
   border: none;
   border-radius: 50%;
   color: red;
