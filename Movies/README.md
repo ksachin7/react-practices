@@ -1,10 +1,26 @@
 
-# Movie Search App
+# Movie Search React-Vite Application
 
 
 ## Overview
 
 This is a simple Movie Search App built using React. It allows users to search for movies, view movie details, and add movies to a watchlist. This README provides an overview of the app's features, installation instructions, folder structure, best practices, data flow, encountered problems, and suggestions for improvement.
+
+Here's a short summary of the various technologies and tools you've used in your project:
+
+1. **React**: This application is built using the React library, a popular JavaScript library for creating user interfaces.
+
+2. **Vite**: Vite is used as the build tool and development server for the project.
+
+3. **React Hooks**: React Hooks like `useState`, `useEffect`, and `useRef` are used to manage state and side effects within the components.
+
+4. **API Integration**: The app integrates with the OMDB API to fetch movie data and display it to the user.
+
+5. **Styling**: Styling is done using a combination of SCSS (Sass) for stylesheets and the Styled Components library for creating styled React components.
+
+6. **Others**: `Prop-drilling`, `PropTypes`, `State Management`, `Responsive Design`, `Error Handling`, `Git and Version Control`
+   
+These are some of the key technologies and practices employed in the project. It showcases a wide range of tools and techniques used to create a functional and interactive React application.
 
 ## React + Vite
 
@@ -31,7 +47,7 @@ To run this app locally, follow these steps:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/your-username/movie-search-app.git
+   git clone https://github.com/ksachin7/React-projects.git
    ```
 
 2. Navigate to the project directory:
@@ -56,13 +72,51 @@ To run this app locally, follow these steps:
 
 ## Folder Structure
 
-The app follows a structured directory layout:
+```
+Movies
+│
+├── README.md
+├── index.html
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+│   └── vite.svg
+├── src
+│   ├── assets
+│   │   ├── images
+│   │   │   ├── no-image.jpeg
+│   │   │   ├── star.empty.svg
+│   │   │   └── star.filled.svg
+│   │   └── scss
+│   │       ├── App.scss
+│   │       ├── MoviesDetails.scss
+│   │       ├── MoviesList.scss
+│   │       ├── NavBar.scss
+│   │       └── index.scss
+│   └── components
+│       ├── App.jsx
+│       ├── common
+│       │   ├── Error.jsx
+│       │   ├── Loading.jsx
+│       │   └── Navbar.jsx
+│       ├── hooks
+│       │   ├── useLocalStorage.js
+│       │   └── useMovies.js
+│       ├── main.jsx
+│       ├── movie-details
+│       │   ├── MoviesDetails.jsx
+│       │   ├── SVGStarIcon.jsx
+│       │   └── StarRatings.jsx
+│       ├── movie-list
+│       │   └── MoviesList.jsx
+│       └── watched-info
+│           ├── WatchedList.jsx
+│           └── WatchedSummary.jsx
+└── vite.config.js
 
-- `src/`: Contains the source code for the React app.
-  - `components/`: Reusable React components.
-  - `assets/`: Images, styles, and other static assets.
-  - `App.js`: The main application component.
-  - `index.js`: Entry point of the app.
+1190 directories, 8354 files
+```
 
 ## Best Practices
 
@@ -125,26 +179,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Acknowledgments
 
-- Thanks to the [OMDb API](http://www.omdbapi.com/) for providing movie data.
-
-Feel free to customize and expand this README to provide more detailed information about your specific app.
-
-***Custom Hook***
-
-Creating a custom hook for fetching and displaying movie details can be a good idea in many cases, as it can help encapsulate and reuse the related logic in a clean and modular way. However, whether it's a good idea depends on the complexity and needs of your application.
-
-Here are some advantages of creating a custom hook for fetching and displaying movie details:
-
-1. **Code Reusability:** By encapsulating the logic for fetching and displaying movie details in a custom hook, you can easily reuse this logic in different components throughout your application. This promotes code reusability and reduces duplication.
-
-2. **Separation of Concerns:** Custom hooks allow you to separate the concerns of fetching data (e.g., from an API) and displaying data (e.g., rendering movie details). This separation makes your code more maintainable and easier to reason about.
-
-3. **Abstraction:** Custom hooks can abstract away the implementation details of data fetching, error handling, and state management. This abstraction can make your components cleaner and more focused on rendering UI.
-
-4. **Testing:** Custom hooks can be tested independently, which makes it easier to write unit tests for your data-fetching and data-displaying logic.
-
-5. **Consistency:** When you use the same custom hook for displaying movie details in multiple places, you ensure a consistent user experience and behavior across your application.
-
-However, whether you should create a custom hook for this purpose depends on the complexity of your application. If you're dealing with a simple case where you fetch movie details in just one or two components, creating a custom hook might be overkill, and you can handle it directly in those components. Custom hooks are most beneficial when you have complex data-fetching and data-displaying logic that needs to be reused across multiple parts of your application.
-
-In summary, creating a custom hook for fetching and displaying movie details is a good idea when you need to reuse this logic across your application or when you want to maintain clean and modular code. It can make your codebase more organized and easier to maintain, especially as your application grows in complexity. However, for simpler cases, you can start with handling the logic directly in your components and refactor into a custom hook when it becomes more beneficial.
+Thanks to the [OMDb API](http://www.omdbapi.com/) for providing movie data.

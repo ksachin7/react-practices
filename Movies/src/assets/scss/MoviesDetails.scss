@@ -43,14 +43,22 @@
     overflow-y: hidden;
 
     .title {
-        margin-bottom: 0;
+        // margin-bottom: 10px;
+
+        &:hover {
+            overflow-x: visible;
+
+            // font-size: 21px;
+            line-height: 1.1;
+        }
     }
 
-    .title:hover {
-        overflow-x: visible;
-        line-height: 1.1;
-        font-size: 21px;
-    }
+    // &.overflowed {
+    //     .title {
+    //         line-height: 1.1;
+    //         font-size: 21px;
+    //     }
+    // }
 
     p {
         transition: white-space 0.7s ease;

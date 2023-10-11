@@ -57,6 +57,7 @@ function StarRatings({ imdbID, onSetRatings }) {
             console.log(err);
         }
     };
+    // console.log(ratings[imdbID]);
 
     // Logic for rendering stars
     return (
@@ -85,7 +86,7 @@ function StarRatings({ imdbID, onSetRatings }) {
 
 StarRatings.propTypes = {
     onSetRatings: PropTypes.func.isRequired,
-    imdbID: PropTypes.number.isRequired
+    imdbID: PropTypes.string.isRequired
 };
 
 export default StarRatings;
