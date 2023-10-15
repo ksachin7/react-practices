@@ -14,11 +14,13 @@ Here's a short summary of the various technologies and tools you've used in your
 
 3. **React Hooks**: React Hooks like `useState`, `useEffect`, and `useRef` are used to manage state and side effects within the components.
 
-4. **API Integration**: The app integrates with the OMDB API to fetch movie data and display it to the user.
+4. **Props-management**: `useContext`, `PropTypes`
 
-5. **Styling**: Styling is done using a combination of SCSS (Sass) for stylesheets and the Styled Components library for creating styled React components.
+5. **API Integration**: The app integrates with the OMDB API to fetch movie data and display it to the user.
 
-6. **Others**: `Prop-drilling`, `PropTypes`, `State Management`, `Responsive Design`, `Error Handling`, `Git and Version Control`
+6. **Styling**: Styling is done using a combination of SCSS (Sass) for stylesheets and the Styled Components library for creating styled React components.
+
+7. **Error Handling**: `Error Handling`
    
 These are some of the key technologies and practices employed in the project. It showcases a wide range of tools and techniques used to create a functional and interactive React application.
 
@@ -180,3 +182,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Acknowledgments
 
 Thanks to the [OMDb API](http://www.omdbapi.com/) for providing movie data.
+
+![Alt Text](./src/assets/images/app-screenshots.gif)

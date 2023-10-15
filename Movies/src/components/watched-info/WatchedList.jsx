@@ -6,33 +6,49 @@ const MovieGrid = styled.div`
   display: flex;
   flex-wrap: wrap;          /* Allow items to wrap to the next row */
   justify-content: center; 
-  gap: 7px; 
+  gap: 10px; 
   margin: 47px 16px 27px 16px;
   max-width: 100%;          /* Ensure the grid doesn't exceed the parent's width */
 
   > * {
     flex: 1;                /* Distribute available space equally among items */
-    min-width: 100px;       /* Minimum width for each item */
+    min-width: 116px;       /* Minimum width for each item */
     margin: 0;              /* Remove any margin */
     box-sizing: border-box; /* Include padding and border in width */
   }
+
+  // using grid layout
+  // display: grid; 
+  // grid-template-columns: repeat(auto-fill, minmax(116px, 1fr));
+  // gap: 10px;
+  // justify-content: center; 
+  // align-items: center; 
+  // margin: 47px 16px 27px 16px;
+}
 `;
 
 
 const MovieCardContainer = styled.div`
   position: relative;
   width: 100%;
+  height: auto;
   max-width: 300px; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;         /* Prevent image overflow */
   text-align: center;       /* Center align content horizontally */
 
   img {
-    max-width: 100%;
+    width: 100%;
     height: 100%;           /* Make the image fill the container's height */
     object-fit: cover;      /* Crop and center the image */
     display: block;         /* Ensure images are centered */
     margin: 0 auto;         /* Center align images horizontally */
+  }
+  &:hover{
+    .remove-btn{
+      color: red;
+      background-color: rgba(10, 10, 10, 0.7);
+    }
   }
 `;
 
@@ -52,10 +68,9 @@ const RemoveButton = styled.button`
   padding: 0 0 3px 1px;
   width: 24px; 
   height: 24px; 
-  background-color: rgba(10, 10, 10, 0.7);
   border: none;
   border-radius: 50%;
-  color: red;
+  color: rgba(0, 0, 0, 0.5);
   box-shadow: 0 2px 4px rgba(250, 250, 250, 0.7);
   cursor: pointer;
   display: flex;
@@ -63,6 +78,7 @@ const RemoveButton = styled.button`
   justify-content: center;
   font-size: 21px;
   font-weight: 800;
+  background-color: transparent;
   transition: background-color 0.3s;
   &:hover {
     &::before {
@@ -94,7 +110,7 @@ function WatchedList({ watched, onRemove, onSelectMovie }) {
               alt={movie.title}
             />
             {/* <MovieTitle>{movie.title}</MovieTitle> */}
-            <RemoveButton type='button' value="remove" onClick={() => onRemove(movie.imdbID)}>&#215;</RemoveButton>
+            <RemoveButton className="remove-btn" type='button' value="remove" onClick={() => onRemove(movie.imdbID)}>&#215;</RemoveButton>
           </MovieCardContainer>
         ))
       }
