@@ -1,10 +1,14 @@
-// Cart.js
 import React from 'react';
 import './Cart.css';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { decrementQuantity, incrementQuantity } from '../actions/cartActions';
+import { useSelector, useDispatch } from 'react-redux';
 
-function Cart({ cart, decrementQuantity, incrementQuantity }) {
+// function Cart({ cart, decrementQuantity, incrementQuantity }) {
+function Cart() {
+    const cart = useSelector((state) => state.cart.items);
+    const dispatch = useDispatch();
+
     const calculateTax = () => {
         const subtotal = calculateSubtotal();
         const taxRate = 0.1; // 10%
@@ -44,9 +48,9 @@ function Cart({ cart, decrementQuantity, incrementQuantity }) {
                                             <td colSpan={3}>{product.name}</td>
                                             <td colSpan={2}>&#x20B9; {product.price.toFixed(2)}</td>
                                             <td>
-                                                <button onClick={() => decrementQuantity(product)}>-</button>
+                                                <button onClick={() => dispatch(decrementQuantity(product))}>-</button>
                                                 &nbsp;{product.quantity}&nbsp;
-                                                <button onClick={() => incrementQuantity(product)}>+</button>
+                                                <button onClick={() => dispatch(incrementQuantity(product))}>+</button>
                                             </td>
                                         </tr>
                                     ))}
@@ -87,8 +91,9 @@ function Cart({ cart, decrementQuantity, incrementQuantity }) {
     );
 }
 
-const mapStateToProps = (state) => ({
-    cart: state.cart.items,
-});
+// const mapStateToProps = (state) => ({
+//     cart: state.cart.items,
+// });
 
-export default connect(mapStateToProps, { incrementQuantity, decrementQuantity })(Cart);
+// export default connect(mapStateToProps, { incrementQuantity, decrementQuantity })(Cart);
+export default Cart;

@@ -93,17 +93,32 @@ The project has the following structure:
 
 ### Here's a simplified overview of how Redux works
 
-1. **Store Setup:** First, a Redux store is created using the `createStore` function from the Redux library. The store holds the application state and provides methods for accessing and updating it.
-2. **Provider Component:** The root component of the React application is wrapped with the `Provider` component from the React Redux library. The `Provider` component makes the Redux store available to all components in the application by passing it as a prop.
-3. **Connect Function:** Components that need access to the Redux store can use the `connect` function from the React Redux library. The `connect` function is used to create a wrapper component that connects the React component to the Redux store. This wrapper component, also known as a "container component," has access to the store's state and can dispatch actions.
-4. **mapStateToProps:** To specify which parts of the Redux state should be mapped to the component's props, the `mapStateToProps` function is used. It takes the state from the Redux store and returns an object with the specific properties that should be passed as props to the connected component.
-5. **mapDispatchToProps:** If the component needs to dispatch actions to update the state, the `mapDispatchToProps` function is used. It maps action creators to props, allowing the component to trigger actions when needed.
-6. **Rendering and Updating:** Once connected to the Redux store, the component can access the mapped state and action props. When the Redux state is updated, the component will re-render with the new data, ensuring that the UI reflects the latest state.
-7. **Dispatching Actions:** Components can dispatch actions by calling the action creators mapped to their props through `mapDispatchToProps`. These actions trigger the appropriate reducers, which update the state in the Redux store.
+Redux is a state management library commonly used with React, though it can be used with other JavaScript frameworks or libraries as well. It helps manage the state of an application in a predictable way, making it easier to understand and debug complex applications.
 
-By using React Redux, the application's state management becomes more organized and predictable. 
+Here's a simplified explanation of how Redux works:
 
-React components can easily access the necessary state and trigger actions to modify it, all while maintaining a clear separation of concerns between the UI components and the state management logic.
+1. **Store:**
+   - At the core of Redux is the store, which is a single JavaScript object that represents the entire state of your application.
+   - The store holds the current state and provides methods to update and retrieve the state.
+
+2. **Actions:**
+   - Changes to the state in a Redux application are triggered by actions.
+   - Actions are plain JavaScript objects with a `type` property that describes the type of action being performed. Additional data can be included in the object to provide information about the action.
+
+3. **Reducers:**
+   - Reducers are functions responsible for handling actions and updating the state.
+   - A reducer is a pure function that takes the current state and an action as arguments and returns a new state. It should not modify the existing state but create a new state based on the action.
+
+4. **Dispatch:**
+   - To update the state, you dispatch actions to the Redux store.
+   - The `store.dispatch(action)` method is used to send an action to the store.
+
+5. **Subscription:**
+   - Components interested in changes to the state can subscribe to the Redux store.
+   - When the state in the store changes, subscribers are notified, and they can update accordingly.
+
+6. **React-Redux Hooks:**
+    - With the introduction of React hooks, you can use the `useDispatch` and `useSelector` hooks from the `react-redux` library to interact with the Redux store directly within functional components.
 
 ## Improvements
 
@@ -121,3 +136,4 @@ The Shopping Cart App can be enhanced in the following ways:
 
 - **Accessibility**: Ensure the app is accessible by implementing accessibility best practices.
 
+**Note**: Please Ignore the commented code if that doesn't make sense. Commented code might be a practice of writing code in older way/version of react/redux for learning purpose.
