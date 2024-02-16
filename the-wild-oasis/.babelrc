@@ -1,0 +1,24 @@
+{
+    "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react"
+    ],
+    "plugins": [
+        [
+            "babel-plugin-styled-components",
+            {
+                "ssr": true, // Enable server-side rendering support
+                "displayName": true, // Enable better debugging with component display names
+                "fileName": true, // Prefix component display names with the filename
+                "meaninglessFileNames": [
+                    "index",
+                    "styles"
+                ], // Customize meaningless filenames
+                "minify": true, // Enable CSS minification
+                "transpileTemplateLiterals": true, // Transpile tagged template literals
+                "pure": true, // Enable pure annotation for dead code elimination
+                "namespace": "my-app" // Add namespace to ensure class name uniqueness
+            }
+        ]
+    ]
+}
