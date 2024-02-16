@@ -24,7 +24,8 @@
 *.cache
 *.DS_Store
 
-# Dependency directories
+# Build/Dependency directories
+dist/
 node_modules/
 bower_components/
 

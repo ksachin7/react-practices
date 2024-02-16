@@ -18,5 +18,14 @@ export default defineConfig({
       }
     }
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://www.omdbapi.com/', // Replace with your API endpoint
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
   // root: './src',
 })
