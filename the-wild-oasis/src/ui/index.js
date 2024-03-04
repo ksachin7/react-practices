@@ -16,8 +16,8 @@ import Heading from "./Heading";
 import Input from "./Input";
 import Logo from "./Logo";
 // import MainNav from "./MainNav";
-// import Menus from "./Menus";
-// import Modal from "./Modal";
+import Menus from "./Menus";
+import Modal from "./Modal";
 // import Pagination from "./Pagination";
 import Row from "./Row";
 // import Select from "./Select";
@@ -29,5 +29,5 @@ import Tag from "./Tag";
 import TextArea from "./Textarea";
 
 
-export { AppLayout, Button, ButtonIcon, ButtonsGroup, Checkbox, ConfirmDelete, DataItem, Empty, FileInput, Form, FormRow, Heading, Input, Logo,  Row, Spinner, SpinnerMini, Tag, TextArea };
-// ErrorFallback, MainNav, Menus, Modal, Pagination, Filter, Flag, Select,  Table, TableOperation,
+export { AppLayout, Button, ButtonIcon, ButtonsGroup, Checkbox, ConfirmDelete, DataItem, Empty, FileInput, Form, FormRow, Heading, Input, Logo, Menus, Modal,  Row, Spinner, SpinnerMini, Tag, TextArea };
+// ErrorFallback, MainNav, Pagination, Filter, Flag, Select,  Table, TableOperation,

@@ -9,7 +9,39 @@ const renderButtons = (cart, dispatch, product) => {
     // const isProductInCart = (productId) => {
     //     return cart.some(item => item.id === productId);
     // };
-    const cartItem = cart.find(item => item.id === product.id);
+  
+    // test-api
+    // const [responseData, setResponseData] = useState(null);
+    // const [error, setError] = useState(null);
+  
+    // useEffect(() => {
+    //   const fetchData = async () => {
+    //     const url =
+    //       'https://amazon-product-reviews-keywords.p.rapidapi.com/product/search?keyword=iphone&country=US&category=aps';
+    //     const options = {
+    //       method: 'GET',
+    //       headers: {
+    //         'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY', // Replace this with your actual API key
+    //         'X-RapidAPI-Host': 'amazon-product-reviews-keywords.p.rapidapi.com',
+    //       },
+    //     };
+  
+    //     try {
+    //       const response = await fetch(url, options);
+    //       if (!response.ok) {
+    //         throw new Error('Network response was not ok');
+    //       }
+    //       const result = await response.text();
+    //       setResponseData(result);
+    //     } catch (error) {
+    //       setError(error);
+    //     }
+    //   };
+  
+    //   fetchData();
+    // }, []); // Empty dependency array ensures this effect runs only once on component mount
+
+      const cartItem = cart.find(item => item.id === product.id);
 
     if (cartItem && cartItem.quantity > 0) {
         return (
