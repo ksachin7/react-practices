@@ -1,4 +1,5 @@
 # The wild oasis
+Status: (incomplete) in progress...
 
 ### Step 1: Setting Up Authentication
 - Implement user authentication using Firebase Authentication or a similar service.

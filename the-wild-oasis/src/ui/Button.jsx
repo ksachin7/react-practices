@@ -10,7 +10,7 @@ const sizes = {
   `,
   md: css`
     font-size: 1.4rem;
-    padding: 1.2rem 1.6rem;
+    padding: 0.7rem 1.1rem;
     font-weight: 500;
   `,
   lg: css`
