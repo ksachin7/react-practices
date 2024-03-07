@@ -1,7 +1,7 @@
 # The wild oasis
-Status: (incomplete) in progress...
-Deployment: [https://the-wild-oasis.netlify.app](https://the-wild-oasis-1ef4a.netlify.app/)
 
+Status: (incomplete) in progress...  
+Deployment: [https://the-wild-oasis.netlify.app](https://the-wild-oasis-1ef4a.netlify.app/)  
 
 ### Step 1: Setting Up Authentication
 - Implement user authentication using Firebase Authentication or a similar service.
