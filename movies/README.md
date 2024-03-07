@@ -1,6 +1,7 @@
 
 # Movie Search React-Vite Application
 
+**Deployment**: [https://movies.netlify.app](https://movies-02bf70.netlify.app)
 
 ## Overview
 
@@ -174,10 +175,6 @@ Suggestions for improving the app:
 - Enhance the user interface with animations and transitions.
 
 - Write comprehensive unit tests and integration tests to ensure app stability.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
