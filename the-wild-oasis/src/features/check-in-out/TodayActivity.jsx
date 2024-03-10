@@ -1,5 +1,5 @@
+import React from "react";
 import styled from "styled-components";
-
 import Heading from "../../ui/Heading";
 import Row from "../../ui/Row";
 
@@ -42,6 +42,8 @@ function Today() {
       <Row type="horizontal">
         <Heading as="h2">Today</Heading>
       </Row>
+      The app isn't completed yet! Working on it... <br></br>
+      booking and some other functionality has to implement to display real data and statistics here.
     </StyledToday>
   );
 }
