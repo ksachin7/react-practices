@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Heading from "../ui/Heading";
-import Row from "../ui/Row";
+import {Row, Filter} from "../ui";
 import { getCabins } from "../services/apiCabins";
 import CabinTable from "../features/cabins/CabinTable"
 import AddCabin from "../features/cabins/AddCabin";
+import CabinTableOperations from "../features/cabins/CabinTableOperations";
 
-function Cabins() {  
+function Cabins() {
   // fetching data without react-query
   //   useEffect(() => {
   //     getCabins().then((data) => console.log(data))
@@ -15,7 +16,7 @@ function Cabins() {
     <>
       <Row type="horizontal">
         <Heading as="h1">All cabins</Heading>
-        <p>Filter / Sort</p>
+        <CabinTableOperations />
       </Row>
       <Row>
         <CabinTable />

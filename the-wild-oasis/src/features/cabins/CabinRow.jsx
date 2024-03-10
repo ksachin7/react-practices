@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import styled from "styled-components";
 import { formatCurrency } from "../../utils/helpers";
-import { Button, ButtonsGroup, ConfirmDelete, Modal } from '../../ui';
+import { Button, ButtonsGroup, ConfirmDelete, Modal, Table } from '../../ui';
 import CreateCabinForm from './CreateCabinForm';
 import { useDeleteCabin } from './useDeleteCabins';
 import { useCreateCabin } from './useCreateCabin';
 import { HiSquare2Stack, HiPencil, HiTrash } from 'react-icons/hi2';
-import Table from '../../ui/Table';
 
 // const TableRow = styled.div`
 //   display: grid;
@@ -68,17 +67,17 @@ function CabinRow({ cabin }) {
         <Price>{formatCurrency(regularPrice)}</Price>
         {discount ? <Discount>{formatCurrency(discount)}</Discount> : <span>&mdash;</span>}
         <ButtonsGroup>
-          <button disabled={isCreating} onClick={handleDuplicate}><HiSquare2Stack /></button>
+          <Button variation="success" size='sm' disabled={isCreating} onClick={handleDuplicate}><HiSquare2Stack /></Button>
           <Modal>
             <Modal.Open opens="edit">
-              <button><HiPencil /></button>
+              <Button variation="primary" size='sm'><HiPencil /></Button>
             </Modal.Open>
             <Modal.Window name="edit">
               <CreateCabinForm cabinToEdit={cabin} />
             </Modal.Window>
 
             <Modal.Open opens='delete'>
-              <button><HiTrash /></button>
+              <Button variation="danger" size='sm'><HiTrash /></Button>
             </Modal.Open>
             <Modal.Window name='delete'>
             <ConfirmDelete resourceName="cabin" disabled={isDeleting} onConfirm={() => deleteCabin(cabinId)} />

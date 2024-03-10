@@ -1,7 +1,10 @@
+import React from 'react'
 import styled from "styled-components";
+import { Heading } from '../../ui';
+import { useDarkMode } from '../../context/DarkModeContext';
+import { Pie, PieChart, ResponsiveContainer, Tooltip, Cell, Legend } from 'recharts';
 
 const ChartBox = styled.div`
-  /* Box */
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
@@ -21,7 +24,7 @@ const ChartBox = styled.div`
 const startDataLight = [
   {
     duration: "1 night",
-    value: 0,
+    value: 1,
     color: "#ef4444",
   },
   {
@@ -31,7 +34,7 @@ const startDataLight = [
   },
   {
     duration: "3 nights",
-    value: 0,
+    value: 7,
     color: "#eab308",
   },
   {
@@ -41,17 +44,17 @@ const startDataLight = [
   },
   {
     duration: "6-7 nights",
-    value: 0,
+    value: 5,
     color: "#22c55e",
   },
   {
     duration: "8-14 nights",
-    value: 0,
+    value: 10,
     color: "#14b8a6",
   },
   {
     duration: "15-21 nights",
-    value: 0,
+    value: 6,
     color: "#3b82f6",
   },
   {
@@ -130,3 +133,50 @@ function prepareData(startData, stays) {
 
   return data;
 }
+
+function DurationChart({ confirmedStays }) {
+  const { isDarkMode } = useDarkMode();
+  // const isDarkMode = true;
+  const colors = isDarkMode
+    ? {
+      text: "#e5e7eb",
+      background: "#17232f",
+    }
+    : {
+      text: "#374151",
+      background: "#fff",
+    };
+
+  return (
+    <ChartBox>
+      <Heading as='h2'>Stay duration summary</Heading>
+      <ResponsiveContainer width="100%" height={240}>
+        <PieChart>
+          <Pie
+            data={startDataLight}
+            nameKey="duration"
+            dataKey="value"
+            innerRadius={70}
+            outerRadius={100}
+            cx="50%"
+            cy="50%"
+            paddingAngle={3}
+          >
+            {startDataLight.map(entry => (<Cell key={entry.duration} fill={entry.color} stroke={entry.color} />))}
+          </Pie>
+          <Tooltip contentStyle={{ color: colors.text, backgroundColor: colors.background }} />
+          <Legend
+            verticalAlign="middle"
+            align="right"
+            width="34%"
+            layout="vertical"
+            iconSize={15}
+            iconType="circle"
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    </ChartBox>
+  )
+}
+
+export default DurationChart;
