@@ -13,7 +13,7 @@ Styling: `css`, `scss`, `styled-components`
 Routing: `react-router`  
 Backend: `Supabase`  
 Caching: `Local-storage`  
-Charts: `recharts`
+Charts: `recharts`  
 Build-tools & bundlers: `webpack`, `vite`  
 
 ## Future work
