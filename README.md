@@ -13,10 +13,10 @@ Styling: `css`, `scss`, `styled-components`
 Routing: `react-router`  
 State management: `Redux`, `React-query`  
 Backend: `Supabase`  
-Authentication & Authorization : `Supabase`
+Authentication & Authorization : `Supabase`  
 Caching: `Local-storage`  
 Charts: `recharts`  
-Errors: `StrictMode`, `ErrorBoundary`
+Errors: `StrictMode`, `ErrorBoundary`  
 Build-tools & bundlers: `webpack`, `vite`  
 
 ## Future work
