@@ -6,19 +6,19 @@ This repository contains two main React projects([movies](https://movies-02bf70.
 
 **Tools & Technologies**  
 These tools and technologies are used in various projects of this repository:  
-`React`, `react-hooks`, `props`, `API Integration`, `react-form`, `toast`, `modal`, `react-icons`, `Dark-mode` `prop-types` etc.
+`React`, `react-hooks`, `props`, `prop-types`, `API Integration`, `react-form`, `toast`, `modal`, `react-icons`, `Dark-mode`, etc.
 
-State management: `Redux`, `React-query`  
+Responsive & Re-usable ui components
 Styling: `css`, `scss`, `styled-components`  
 Routing: `react-router`  
+State management: `Redux`, `React-query`  
 Backend: `Supabase`  
+Authentication & Authorization : `Supabase`
 Caching: `Local-storage`  
 Charts: `recharts`  
+Errors: `StrictMode`, `ErrorBoundary`
 Build-tools & bundlers: `webpack`, `vite`  
 
 ## Future work
 
-In the future, I plan to incorporate the following features and functionalities into my projects:  
-`Authentication`, `authorization`, `Pagination` etc.
-
-Also, I plan to implement unit testing using `jest` & `mocha` later on.
+In the future, I plan to implement `Pagination` and unit testing using `jest` & `mocha`.
