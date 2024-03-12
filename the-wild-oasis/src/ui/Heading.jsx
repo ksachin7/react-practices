@@ -5,6 +5,7 @@ const Heading = styled.h1`
         font-size: 3rem;
         font-weight: 600;
     `}
+   
     ${(props) => props.as === "h2" && css`
         font-size: 2rem;
         font-weight: 600;
@@ -13,7 +14,12 @@ const Heading = styled.h1`
         font-size: 1.5rem;
         font-weight: 500;
     `}
-
+    
+    ${(props) => props.as === "h-center" && css`
+        font-size: 3rem;
+        font-weight: 600;
+        text-align: center;
+    `}
     padding-left: 1rem 0; 
     line-height: 1.4;
 `;

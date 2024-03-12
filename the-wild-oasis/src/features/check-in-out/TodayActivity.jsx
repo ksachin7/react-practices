@@ -42,8 +42,8 @@ function Today() {
       <Row type="horizontal">
         <Heading as="h2">Today</Heading>
       </Row>
-      The app isn't completed yet! Working on it... <br></br>
-      booking and some other functionality has to implement to display real data and statistics here.
+      <p>The app isn't completed yet! Working on it... <br></br>
+      booking and some other functionality has to implement to display real data and statistics here.</p>
     </StyledToday>
   );
 }

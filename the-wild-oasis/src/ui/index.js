@@ -28,7 +28,7 @@ import Table from "./Table";
 import TableOperations from "./TableOperations";
 import Tag from "./Tag";
 import TextArea from "./Textarea";
+import ProtectedRouteContainer from './ProtectedRouteContainer'
 
-
-export { AppLayout, Button, ButtonIcon, ButtonsGroup, Checkbox, ConfirmDelete, DataItem, Empty, FileInput, Filter, Form, FormRow, Heading, Input, Logo, Menus, Modal, Pagination, Row, SortBy, Spinner, SpinnerMini, Table, TableOperations, Tag, TextArea };
+export { AppLayout, Button, ButtonIcon, ButtonsGroup, Checkbox, ConfirmDelete, DataItem, Empty, FileInput, Filter, Form, FormRow, Heading, Input, Logo, Menus, Modal, Pagination, ProtectedRouteContainer, Row, SortBy, Spinner, SpinnerMini, Table, TableOperations, Tag, TextArea };
 // ErrorFallback, MainNav, Flag, Select, ,
