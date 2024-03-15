@@ -9,6 +9,7 @@ export async function Signup({ fullName, email, password }) {
                 fullName,
                 avatar: "",
             },
+            // role: isGuest ? "Guest" : null, // Assign the Guest role if isGuest is true
         }
     })
     if (error) throw new Error(error.message)
@@ -72,5 +73,4 @@ export async function updateCurrentUser({ fullName, password, avatar }) {
 
     if (error2) throw new Error(error2.message);
     return updatedUser;
-
 }
