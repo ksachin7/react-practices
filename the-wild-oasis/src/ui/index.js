@@ -6,16 +6,17 @@ import Checkbox from "./Checkbox";
 import ConfirmDelete from "./ConfirmDelete";
 import DataItem from "./DataItem";
 import Empty from "./Empty";
-// import ErrorFallback from "./ErrorFallback";
+import ErrorFallback from "./ErrorFallback";
 import FileInput from "./FileInput";
 import Filter from "./Filter";
 // import Flag from "./Flag";
 import Form from "./Form";
 import FormRow from "./FormRow";
+import FormRowVertical from './FormRowVertical';
 import Heading from "./Heading";
 import Input from "./Input";
 import Logo from "./Logo";
-// import MainNav from "./MainNav";
+import MainNav from "./MainNav";
 import Menus from "./Menus";
 import Modal from "./Modal";
 import Pagination from "./Pagination";
@@ -30,5 +31,4 @@ import Tag from "./Tag";
 import TextArea from "./Textarea";
 import ProtectedRouteContainer from './ProtectedRouteContainer'
 
-export { AppLayout, Button, ButtonIcon, ButtonsGroup, Checkbox, ConfirmDelete, DataItem, Empty, FileInput, Filter, Form, FormRow, Heading, Input, Logo, Menus, Modal, Pagination, ProtectedRouteContainer, Row, SortBy, Spinner, SpinnerMini, Table, TableOperations, Tag, TextArea };
-// ErrorFallback, MainNav, Flag, Select, ,
+export { AppLayout, Button, ButtonIcon, ButtonsGroup, Checkbox, ConfirmDelete, DataItem, Empty, FileInput, Filter, Form, FormRow, FormRowVertical, Heading, Input, Logo, Menus, Modal, Pagination, ProtectedRouteContainer, Row, SortBy, Spinner, SpinnerMini, Table, TableOperations, Tag, TextArea, ErrorFallback, MainNav, Select, };

@@ -58,4 +58,7 @@ Deployment: [https://the-wild-oasis.netlify.app](https://the-wild-oasis-1ef4a.ne
 - Ensure responsive design for compatibility with various screen sizes.
 - Implement error handling and feedback mechanisms for a smooth user experience.
 
+### Future work
+- Restrict access to users and account page for guest user.
+
 By following these steps, you can gradually build a hotel management app using React that meets the specified requirements. Remember to test each feature thoroughly to ensure functionality and usability.
