@@ -141,7 +141,7 @@ function MoviesDetails({ selectedId, onAddToWatch, onCloseMovie, watched }) {
         </div>
         <div className="details">
           <div className="buttons">
-            <StarRatings imdbID={selectedId} onSetRatings={setUserRatings} />
+            <StarRatings imdbID={selectedId} max={10} onSetRatings={setUserRatings} />
             {isAddedToWatched ?
               (<strong>Added to watched!</strong>)
               : (
