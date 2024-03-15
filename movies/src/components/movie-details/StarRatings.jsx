@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { EmptyStarIcon, FilledStarIcon } from './SVGStarIcon';
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
-function StarRatings({ imdbID, onSetRatings }) {
+function StarRatings({ imdbID, onSetRatings, max }) {
     const [ratings, setRatings] = useLocalStorage({}, 'user-ratings');
     const [hoveredRatings, setHoveredRatings] = useState(0);
 
@@ -66,7 +66,7 @@ function StarRatings({ imdbID, onSetRatings }) {
                 <p>You rated it {ratings[imdbID]} ★</p>
             )
                 :
-                Array.from({ length: 10 }).map((_, index) => (
+                Array.from({ length: max }).map((_, index) => (
                     <span
                         key={index}
                         className={index < movieRatings ? 'star-filled' : ''}
