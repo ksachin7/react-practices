@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { styled, css } from 'styled-components';
 
 const variations = {
@@ -74,7 +75,10 @@ const StyledButton = styled.button`
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   ${props => variations[props.variant]}
   ${props => sizes[props.size]}
-  text-transform: ${props => props.uppercase ? 'uppercase' : 'none'}; 
+  text-transform: ${props => props.uppercase ? 'uppercase' : 'none'};
+  &:focus{
+    outline: none;
+  } 
 `;
 
 function Button({ children, variant, color, size, ...otherProps }) {
@@ -83,6 +87,13 @@ function Button({ children, variant, color, size, ...otherProps }) {
       {children}
     </StyledButton>
   );
+}
+
+Button.propTypes= {
+  variant: PropTypes.string,
+  color: PropTypes.string,
+  size: PropTypes.string,
+  uppercase: PropTypes.bool,
 }
 
 Button.defaultProps = {
