@@ -1,30 +1,69 @@
 import React from 'react'
-import './styles/App.css'
-import TypoGraphy from './components/Typography';
-import Button from './components/Button';
-import AppContainer from './components/AppContainer';
+import { AppGridContainer, Accordian, Button, Card, CardContent, CardHeader, ButtonsGroup, Spinner, Typography } from './components';
 import GlobalStyles from './styles/GlobalStyles';
-import { Card, CardContent, CardHeader } from './components/Card'
-import ButtonGroup from './components/ButtonGroup';
+import Select from './components/Select';
+import Navbar from './components/Navbar';
+import DarkModeToggle from './components/DarkModeToggle';
 
 function App() {
+  const options = [
+    { label: 'Option 1', value: 'option1' },
+    { label: 'Option 2', value: 'option2' },
+    { label: 'Option 3', value: 'option3' },
+  ];
+
+  const handleSelectChange = (value) => {
+    console.log('Selected value:', value);
+  };
 
   return (
-    <AppContainer>
+    <>
       <GlobalStyles />
-      <TypoGraphy variant='h1' component=''>UI Components</TypoGraphy>
-      <Card>
-        <CardHeader title='Buttons & ButtonGroup' />
-        <CardContent>
-          <ButtonGroup>
-            <Button variant='outlined' size='sm' color='info'>sm-outlined</Button>
-            <Button size='md' color='warning'>md-button</Button>
-            <Button size='lg'>lg-button</Button>
-            <Button color='danger' uppercase>uppercase</Button>
-          </ButtonGroup>
-        </CardContent>
-      </Card>
-    </AppContainer>
+      <Navbar logo='/react.svg' title='Navbar Title'><DarkModeToggle /></Navbar>
+      <Typography className='py-1' variant='h1'>UI Components</Typography>
+      <AppGridContainer>
+        <Card>
+          <CardHeader title='Buttons & ButtonGroup' />
+          <CardContent>
+            <ButtonsGroup>
+              <Button variant='outlined' size='sm'>sm-outlined</Button>
+              <Button variant='outlined' size='md' color='secondary'>md-outlined</Button>
+            </ButtonsGroup>
+            <ButtonsGroup>
+              <Button size='md' color='warning'>md-button</Button>
+              <Button color='danger' uppercase>uppercase</Button>
+            </ButtonsGroup>
+            <Button size='lg' color='success'>lg-button</Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader title='Accordian' />
+          <CardContent>
+            <Accordian title='Default accordian' subtitle='Some extra text'>Accordian texts</Accordian>
+            <Accordian title='No gutter space Accordian title' disableGutters>Accordian texts</Accordian>
+            <Accordian title='Custom color Accordian title' color='lightGreen'>Accordian texts</Accordian>
+            <Accordian title='Disabled accordian title' disabled>Accordian texts</Accordian>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader title='Select' />
+          <CardContent>
+            <Select options={options} width='100%' onChange={handleSelectChange} />
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader title='Spinners' />
+          <CardContent>
+            <Spinner type='thin' />
+            <Spinner size={50} color='lightBlue' />
+            <Spinner size={60} color='lightGreen' />
+            <Spinner size={70} />
+          </CardContent>
+        </Card>
+      </AppGridContainer>
+    </>
   )
 }
 

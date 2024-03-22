@@ -7,6 +7,8 @@ const CardWrapper = styled.div`
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: auto;
 `;
 
 const Card = ({ children, className, ...otherProps }) => {
@@ -47,7 +49,7 @@ CardContent.propTypes = {
 
 const CardHeaderWrapper = styled.div`
   padding: 5px;
-  background-color: #f5f5f5;
+  background-color: var(--color-grey-100);
 `;
 
 const CardHeader = ({ title, subheader, className, ...otherProps }) => {

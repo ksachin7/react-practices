@@ -142,12 +142,13 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  color: var(--color-grey-700);
-
+  color: var(--color-grey-900);
+  background-color: var(--color-grey-50);
   transition: color 0.3s, background-color 0.3s;
   min-height: 100vh;
   line-height: 1.5;
   font-size: 1.6rem;
+  padding: 2rem 3rem;
 }
 
 input,
@@ -168,7 +169,7 @@ button {
 
 select:disabled,
 input:disabled {
-  background-color: var(--color-grey-200);
+  background-color: var(--color-grey-100);
   color: var(--color-grey-500);
 }
 

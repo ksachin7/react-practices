@@ -6,7 +6,7 @@ const StyledButtonGroup = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-
+  margin: 5px 0 5px 0;
   /*
   // Apply space between buttons 
   & > * {
@@ -20,8 +20,8 @@ const StyledButtonGroup = styled.div`
   */
 `;
 
-function ButtonGroup({ children, ...otherProps }) {
+function ButtonsGroup({ children, ...otherProps }) {
   return <StyledButtonGroup {...otherProps}>{children}</StyledButtonGroup>;
 }
 
-export default ButtonGroup;
+export default ButtonsGroup;

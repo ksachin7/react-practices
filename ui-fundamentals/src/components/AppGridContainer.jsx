@@ -6,13 +6,14 @@ const GridContainer = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 20px;
     width: 100%;
+    margin-top: 1.6rem;
     /* Media query for smaller screens */
     @media screen and (max-width: 768px) {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
 `;
-function AppContainer({ children }) {
+function AppGridContainer({ children }) {
     return (<GridContainer>{children}</GridContainer>)
 }
 
-export default AppContainer
+export default AppGridContainer;
