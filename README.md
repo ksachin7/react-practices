@@ -2,7 +2,7 @@
 
 Welcome to my React projects repository!
 
-This repository contains two main React projects([movies](https://movies-02bf70.netlify.app) and [the-wild-oasis](https://the-wild-oasis-1ef4a.netlify.app/)) and some other React practices covering various topics.  
+This repository contains two main React projects([movies](https://github.com/ksachin7/React-practices/tree/4061c6d6ff0ab49fdc09c3593373917a87f271b9/movies) and [the-wild-oasis](https://github.com/ksachin7/React-practices/tree/4061c6d6ff0ab49fdc09c3593373917a87f271b9/the-wild-oasis)) and some other React practices covering various topics.  
 
 **Tools & Technologies**  
 These tools and technologies are used in various projects of this repository:  
