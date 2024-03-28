@@ -20,7 +20,7 @@ const SpinnerWrapper = styled.div`
             ? 'none'
             : `
         radial-gradient(circle farthest-side, ${props.color || 'var(--color-brand-600)'} 94%, transparent) top/10px 10px no-repeat,
-        conic-gradient(#fff 30%, ${props.color || 'var(--color-brand-600)'})
+        conic-gradient(transparent 30%, ${props.color || 'var(--color-brand-600)'})
     `
     };
 
@@ -40,7 +40,7 @@ const SpinnerWrapper = styled.div`
 `;
 
 const Spinner = ({ size = 40, color, type }) => {
-    return <SpinnerWrapper size={size} color={color} type={type} />;
+    return <SpinnerWrapper data-testid='Spinner-Wrapper' size={size} color={color} type={type} />;
 };
 
 Spinner.propTypes = {

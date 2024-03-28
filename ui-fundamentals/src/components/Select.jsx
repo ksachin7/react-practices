@@ -52,6 +52,7 @@ const Select = ({ options, defaultValue, onChange, width }) => {
   return (
     <SelectContainer>
       <SelectDropdown
+        data-testid='Select-Dropdown'
         value={selectedValue}
         onChange={handleSelectChange}
         width={width}

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 function Typography({
     variant = 'body1',
-    component: Component = 'p',
     className,
     children,
     ...otherProps
@@ -50,7 +49,6 @@ Typography.propTypes = {
         'button',
         'srOnly',
     ]),
-    component: PropTypes.elementType,
     className: PropTypes.string,
     children: PropTypes.node
 }
