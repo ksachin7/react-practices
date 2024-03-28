@@ -60,8 +60,9 @@ npm-debug.log*
 
 # macOS-specific files
 .DS_Store
-Icon
-
+*Icon
+*Icon?
+*Icon\r
 # Windows-specific files
 Thumbs.db
 
@@ -83,7 +84,27 @@ npm-debug.log*
 yarn-error.log*
 .pnp/
 .pnp.js
+.eslintrc.cjs
 
 # not-including
 ultimate-react-course-main/
 practice/
+
+*__mocks__/
+*__snapshots__/
+
+*Checkbox.jsx
+*FileUploader.jsx
+*Tables.jsx
+*Forms.jsx
+*TextExpander.jsx
+*StarRatings.jsx
+*Pagination.jsx
+*Datagrid.jsx
+
+# ui-fundamentals/
+interview.prep.txt
+*test.*
+*prettierrc
+*jsconfig.json
+*sandbox.config.json
