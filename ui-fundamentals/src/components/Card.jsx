@@ -7,13 +7,14 @@ const CardWrapper = styled.div`
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: ${(props)=>props.width};
   width: 100%;
   height: auto;
 `;
 
-const Card = ({ children, className, ...otherProps }) => {
+const Card = ({ children, width, className, ...otherProps }) => {
   return (
-    <CardWrapper className={className} {...otherProps}>
+    <CardWrapper className={className} width={width} {...otherProps}>
       {children}
     </CardWrapper>
   );

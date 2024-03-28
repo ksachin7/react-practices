@@ -19,6 +19,14 @@ const variations = {
       border-color: ${props => getHoverColor(props.color)};
       color: ${props => getHoverColor(props.color)};
     }
+  `,
+  text: css`
+    color: var(--color-grey-500);
+    background-color: transparent;
+    border: none;
+    &:hover {
+      color: ${props => getHoverColor(props.color)};
+    }
   `
 };
 
@@ -64,6 +72,8 @@ const getHoverColor = (color) => {
       return 'var(--color-yellow-700)';
     case 'danger':
       return 'var(--color-red-800)';
+    case 'text':
+      return 'transparent';
     default:
       return 'var(--color-blue-700)';
   }
@@ -71,25 +81,38 @@ const getHoverColor = (color) => {
 
 const StyledButton = styled.button`
   border-radius: 4px;
-  cursor: pointer;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   ${props => variations[props.variant]}
   ${props => sizes[props.size]}
-  text-transform: ${props => props.uppercase ? 'uppercase' : 'none'};
+  /* text-transform: ${props => props.uppercase ? 'uppercase' : 'none'}; */
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  /* pointer-events: ${props => props.disabled ? 'none' : 'auto'}; */
   &:focus{
     outline: none;
   } 
+  &:disabled {
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    color: #a0a0a0;
+    box-shadow: none;
+  }
+  &:disabled:hover {
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    color: #a0a0a0;
+    box-shadow: none;
+  }
 `;
 
-function Button({ children, variant, color, size, ...otherProps }) {
+function Button({ children, variant, color, size, disabled, uppercase, ...otherProps }) {
   return (
-    <StyledButton variant={variant} color={color} size={size} {...otherProps}>
+    <StyledButton type="button" variant={variant} color={color} size={size} {...otherProps} disabled={disabled ? true : false} style={{ textTransform: uppercase !== false ? 'uppercase' : 'none' }}>
       {children}
     </StyledButton>
   );
 }
 
-Button.propTypes= {
+Button.propTypes = {
   variant: PropTypes.string,
   color: PropTypes.string,
   size: PropTypes.string,
@@ -100,7 +123,7 @@ Button.defaultProps = {
   variant: 'contained',
   color: 'primary',
   size: 'md',
-  uppercase: false, // Default to not uppercase
+  uppercase: false,
 };
 
 export default Button;

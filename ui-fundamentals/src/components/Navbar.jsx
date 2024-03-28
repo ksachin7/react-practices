@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const NavbarContainer = styled.nav`
-  background-color: ${props => props.backgroundColor || 'var(--color-grey-100)'};
+  background-color: ${props => props.bg || 'var(--color-grey-100)'};
   color: var(--color-grey-900);
   padding: 1rem;
   display: flex;
@@ -54,7 +54,7 @@ const Navbar = ({ logo, title, color, children }) => {
   };
 
   return (
-    <NavbarContainer backgroundColor={color}>
+    <NavbarContainer bg={color}>
       <NavbarBrand>
         {logo && <BrandImage src={logo} alt="Brand Logo" />}
         {title && <BrandText>{title}</BrandText>}
