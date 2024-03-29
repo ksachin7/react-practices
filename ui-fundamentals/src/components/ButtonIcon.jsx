@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from "styled-components";
 
 const StyledButtonIcon = styled.button`
+  color: ${props => props.color};
   background: none;
   border: none;
   padding: ${({ size }) => {
@@ -19,11 +20,14 @@ const StyledButtonIcon = styled.button`
   align-items: center;
   border-radius: var(--border-radius-sm);
   transition: all 0.2s;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
   &:hover, &:focus {
     background-color: transparent;
     outline: none;
   }
-
+  &:disabled{
+    color: silver;
+  }
   & svg {
   width: ${({ size }) => {
     switch (size) {
@@ -37,13 +41,13 @@ const StyledButtonIcon = styled.button`
   }
   };
   height: auto;
-  color: ${({ color }) => color || 'darkGrey'};
+  color: ${props => props.disabled? 'silver': props.color};
 }
 `;
 
-function ButtonIcon({ color, size, children, ...otherProps }) {
+function ButtonIcon({ color, size, children, disabled, ...otherProps }) {
   return (
-    <StyledButtonIcon data-testid='Styled-Button-Icon' color={color} size={size} {...otherProps}>{children}</StyledButtonIcon>
+    <StyledButtonIcon data-testid='Styled-Button-Icon' color={color} size={size} disabled={disabled ? true : false} {...otherProps}>{children}</StyledButtonIcon>
   )
 }
 
