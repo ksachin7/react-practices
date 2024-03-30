@@ -100,7 +100,7 @@ jobs:
 
       - name: Deploy the-wild-oasis to Vercel
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.checkout.outputs.path == 'https://github.com/ksachin7/React-practices/tree/initial/the-wild-oasis'
-        uses: amondnet/vercel-action@v21
+        uses: amondnet/vercel-action@v2
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           # vercel-org-id: your_org_id
