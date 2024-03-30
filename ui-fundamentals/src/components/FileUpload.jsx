@@ -102,10 +102,10 @@ const FileUpload = ({ accept, maxFileSize, onChange, disabled }) => {
       console.error(`File size: ${Math.floor(selectedFile.size / 1024)}KB exceeds the maximum allowed size: ${maxFileSize}KB.`);
       return;
     }
-    console.log('File selected:', selectedFile); // Log selected file
+    // console.log('File selected:', selectedFile); // Log selected file
 
     if (onChange) {
-      console.log('Calling onChange function...'); // Log when onChange is called
+      // console.log('Calling onChange function...'); // Log when onChange is called
       onChange(selectedFile);
     }
   };
