@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from "styled-components";
 import Stats from './Stats';
-import { useRecentBookings } from '../dashboard/useRecentBookings';
-import { useRecentStays } from '../dashboard/useRecentStays';
-import { Spinner } from '../../ui';
+// import { useRecentBookings } from '../dashboard/useRecentBookings';
+// import { useRecentStays } from '../dashboard/useRecentStays';
+// import { Spinner } from '../../ui';
 import SalesChart from './SalesChart';
 import  DurationChart  from './DurationChart';
 import TodayActivity from '../check-in-out/TodayActivity'
