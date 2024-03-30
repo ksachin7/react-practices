@@ -17,6 +17,8 @@ jobs:
       # Step 1: Checkout code from the repository
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          node-version: "14"
 
       # Step 2: Attempt to merge changes from 'main' into the current branch
       - name: Merge main into the current branch
@@ -86,9 +88,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          path: |
-          ui-fundamentals: "https://github.com/ksachin7/React-practices/tree/initial/ui-fundamentals" # Specify the directory where the selected project resides
-          the-wild-oasis: "https://github.com/ksachin7/React-practices/tree/initial/the-wild-oasis"
+          path: "https://github.com/ksachin7/React-practices/tree/initial/ui-fundamentals" # Specify the directory where the selected project resides
+          # the-wild-oasis: "https://github.com/ksachin7/React-practices/tree/initial/the-wild-oasis"
 
       # Additional steps specific to your project, such as installing dependencies, running tests, etc.
       - name: Deploy ui-fundamentals to Vercel
@@ -98,10 +99,10 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-project-name: ui-fundamentals
 
-      - name: Deploy the-wild-oasis to Vercel
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.checkout.outputs.path == 'https://github.com/ksachin7/React-practices/tree/initial/the-wild-oasis'
-        uses: amondnet/vercel-action@v2
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          # vercel-org-id: your_org_id
-          vercel-project-name: the-wild-oasis
+      # - name: Deploy the-wild-oasis to Vercel
+      #   if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.checkout.outputs.path == 'https://github.com/ksachin7/React-practices/tree/initial/the-wild-oasis'
+      #   uses: amondnet/vercel-action@v2
+      #   with:
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      #     # vercel-org-id: your_org_id
+      #     vercel-project-name: the-wild-oasis
