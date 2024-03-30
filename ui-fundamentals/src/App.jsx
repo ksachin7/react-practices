@@ -1,9 +1,10 @@
 import React from 'react'
-import { AppGridContainer, Accordian, Button, Card, CardContent, CardHeader, ButtonsGroup, Spinner, Typography } from './components';
+import { AppGridContainer, Accordion, Button, ButtonIcon, ButtonsGroup, Card, CardContent, CardHeader, DataGrid, Spinner, Typography } from './components';
 import GlobalStyles from './styles/GlobalStyles';
 import Select from './components/Select';
 import Navbar from './components/Navbar';
 import DarkModeToggle from './components/DarkModeToggle';
+import { RiAliensFill } from "react-icons/ri";
 
 function App() {
   const options = [
@@ -19,7 +20,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <Navbar logo='/react.svg' title='Navbar Title'><DarkModeToggle /></Navbar>
+      <Navbar logo='/react.svg' title='Elegant UI'><DarkModeToggle /></Navbar>
       <Typography className='py-1' variant='h1'>UI Components</Typography>
       <AppGridContainer>
         <Card>
@@ -31,19 +32,22 @@ function App() {
             </ButtonsGroup>
             <ButtonsGroup>
               <Button size='md' color='warning'>md-button</Button>
-              <Button color='danger' uppercase>uppercase</Button>
+              <Button color='danger' uppercase disabled>uppercase</Button>
             </ButtonsGroup>
+            <ButtonsGroup>
             <Button size='lg' color='success'>lg-button</Button>
+            <ButtonIcon color={'lightBlue'} size='lg'><RiAliensFill /></ButtonIcon>
+            </ButtonsGroup>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader title='Accordian' />
           <CardContent>
-            <Accordian title='Default accordian' subtitle='Some extra text'>Accordian texts</Accordian>
-            <Accordian title='No gutter space Accordian title' disableGutters>Accordian texts</Accordian>
-            <Accordian title='Custom color Accordian title' color='lightGreen'>Accordian texts</Accordian>
-            <Accordian title='Disabled accordian title' disabled>Accordian texts</Accordian>
+            <Accordion title='Default Accordion' subtitle='Some extra text...' gutters>Accordion texts</Accordion>
+            <Accordion title='No gutter space Accordion title'>Accordion texts</Accordion>
+            <Accordion title='Custom color Accordion title' bg='lightGreen' gutters>Accordion texts</Accordion>
+            <Accordion title='Disabled accordian title' disabled>Accordian texts</Accordion>
           </CardContent>
         </Card>
 
@@ -60,6 +64,25 @@ function App() {
             <Spinner size={50} color='lightBlue' />
             <Spinner size={60} color='lightGreen' />
             <Spinner size={70} />
+          </CardContent>
+        </Card>
+
+        <Card width='680px'>
+          <CardHeader title='FileUploader & DataGrid' />
+          <CardContent>
+            {/* <DataGrid
+              columns={[
+                { headerName: 'ID', field: 'id' },
+                { headerName: 'Name', field: 'name' },
+                { headerName: 'Age', field: 'age' },
+              ]}
+              rows={[
+                { id: 1, name: 'John', age: 30 },
+                { id: 2, name: 'Alice', age: 25 },
+                { id: 3, name: 'Bob', age: 40 },
+              ]}
+            /> */}
+            <DataGrid />
           </CardContent>
         </Card>
       </AppGridContainer>
