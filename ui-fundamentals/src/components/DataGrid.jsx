@@ -96,19 +96,19 @@ const DataGrid = ({ columns, rows }) => {
   //     return a[sortConfig.field] < b[sortConfig.field] ? 1 : -1;
   //   }
   // });
-  
+
   const sortedRows = (rows || [...csvData]).sort((a, b) => {
     const fieldA = a[sortConfig.field];
     const fieldB = b[sortConfig.field];
-    
+
     // Convert values to numbers if possible
     const numFieldA = parseFloat(fieldA);
     const numFieldB = parseFloat(fieldB);
-  
+
     // Check if both fields are valid numbers
     const isNumberA = !isNaN(numFieldA);
     const isNumberB = !isNaN(numFieldB);
-  
+
     // If both fields are valid numbers, sort numerically
     if (isNumberA && isNumberB) {
       if (sortConfig.direction === "ascending") {
@@ -117,7 +117,7 @@ const DataGrid = ({ columns, rows }) => {
         return numFieldB - numFieldA;
       }
     }
-  
+
     // If one of the fields is not a valid number, fall back to string comparison
     if (typeof fieldA === 'string' && typeof fieldB === 'string') {
       if (sortConfig.direction === "ascending") {
@@ -126,18 +126,18 @@ const DataGrid = ({ columns, rows }) => {
         return fieldB.localeCompare(fieldA);
       }
     }
-  
+
     // If one field is a valid number and the other is not, prioritize the number
     if (isNumberA) {
       return -1; // Number comes before string
     } else if (isNumberB) {
       return 1; // String comes before number
     }
-  
+
     // Default case: preserve the original order
     return 0;
-  });    
-  
+  });
+
   const handleEdit = () => {
     setIsEditing(!isEditing); // Toggle editing mode
   };
@@ -193,17 +193,17 @@ const DataGrid = ({ columns, rows }) => {
         }));
         setCsvHeaders(headers);
 
-       // Extract data from CSV, excluding empty rows
-      //  const data = result.data.filter(row => Object.values(row).some(cell => cell.trim() !== ''));
-       const formattedData = result.data.map((row) => {
-         const rowData = {};
-         headers.forEach((header) => {
-           rowData[header.field] = row[header.headerName];
-         });
-         return rowData;
-       });
-       setCsvData(formattedData);
-     },
+        // Extract data from CSV, excluding empty rows
+        //  const data = result.data.filter(row => Object.values(row).some(cell => cell.trim() !== ''));
+        const formattedData = result.data.map((row) => {
+          const rowData = {};
+          headers.forEach((header) => {
+            rowData[header.field] = row[header.headerName];
+          });
+          return rowData;
+        });
+        setCsvData(formattedData);
+      },
     });
   };
 
@@ -240,6 +240,7 @@ const DataGrid = ({ columns, rows }) => {
                   <TableCell data-testid='table-cell' key={colIndex}>
                     {isEditing ? (
                       <InputField
+                        data-testid='cell-input'
                         type='text'
                         value={rows && rows.length > 0 ? row[column.field] : csvData[rowIndex][column.field]}
                         onChange={(e) =>
@@ -270,15 +271,14 @@ const DataGrid = ({ columns, rows }) => {
           <ButtonIcon
             data-testid='edit-btn'
             size='md'
-            // color=''
             onClick={handleEdit}
-            disabled={(!rows || rows.length === 0) && (!csvData || csvData.length ===0)}
+            disabled={(!rows || rows.length === 0) && (!csvData || csvData.length === 0)}
           >
             {isEditing ? (
               "Save Changes"
             ) : (
               <>
-                <TbEdit /> <span style={{padding: '5px'}}>Edit</span>
+                <TbEdit /> <span style={{ padding: '5px' }}>Edit</span>
               </>
             )}
           </ButtonIcon>

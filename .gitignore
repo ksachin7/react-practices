@@ -91,7 +91,6 @@ ultimate-react-course-main/
 practice/
 
 *__mocks__/
-*__snapshots__/
 
 *Checkbox.jsx
 *FileUploader.jsx
