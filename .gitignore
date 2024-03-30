@@ -104,6 +104,7 @@ practice/
 # ui-fundamentals/
 interview.prep.txt
 *test.*
+!/ui-fundamentals/src/tests/*
 *prettierrc
 *jsconfig.json
 *sandbox.config.json
