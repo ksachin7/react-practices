@@ -107,3 +107,6 @@ interview.prep.txt
 *prettierrc
 *jsconfig.json
 *sandbox.config.json
+!.git/COMMIT_EDITMSG
+.github/workflows/
+.vercel
