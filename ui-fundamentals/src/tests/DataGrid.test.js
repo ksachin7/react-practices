@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import { shallow, mount } from 'enzyme';
 import DataGrid from '../components/DataGrid';
 
@@ -70,7 +70,7 @@ describe('DataGrid component', () => {
     // console.log(cellToEdit.debug())
 
     // Get the initial value of the cell
-    const initialValue = cellToEdit.text();
+    // const initialValue = cellToEdit.text();
 
     // Simulate typing into the cell (assuming it becomes an input field in editing mode)
     const newValue = 'New Value';

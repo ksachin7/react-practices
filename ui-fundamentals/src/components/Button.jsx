@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types';
 import { styled, css } from 'styled-components';
 
@@ -117,6 +117,8 @@ Button.propTypes = {
   color: PropTypes.string,
   size: PropTypes.string,
   uppercase: PropTypes.bool,
+  disabled: PropTypes.bool,
+  children: PropTypes.node.isRequired, 
 }
 
 Button.defaultProps = {

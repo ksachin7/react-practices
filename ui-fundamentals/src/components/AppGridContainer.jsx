@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
+import PropTypes from 'prop-types'; 
 import styled from 'styled-components';
 
 const GridContainer = styled.div`
@@ -19,5 +20,11 @@ function AppGridContainer({ children, width }) {
         </GridContainer>
     );
 }
+
+// Define PropTypes for the component
+AppGridContainer.propTypes = {
+    children: PropTypes.node.isRequired, 
+    width: PropTypes.string, 
+};
 
 export default AppGridContainer;

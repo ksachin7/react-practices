@@ -1,5 +1,5 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme'; // Import shallow instead of mount
+import React from 'react'; // eslint-disable-line no-unused-vars
+import { shallow } from 'enzyme'; 
 import Select from '../components/Select';
 
 describe('Select component', () => {

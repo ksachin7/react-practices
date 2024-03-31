@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -14,7 +15,7 @@ const AccordionHeader = styled.div`
   user-select: none; 
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   color: ${props => (props.disabled ? 'rgba(0, 0, 0, 0.3)' : 'rgb(50, 50, 50)')};
-  background-color: ${(props, otherProps) => (props.disabled ? 'var(--color-grey-200)' : props.bg || '#f9f9f9')};
+  background-color: ${(props) => (props.disabled ? 'var(--color-grey-200)' : props.bg || '#f9f9f9')};
   display: flex;
   align-items: center;
   white-space: nowrap;      // Prevent text from wrapping 
@@ -25,7 +26,7 @@ const AccordionHeader = styled.div`
 const AccordionContent = styled.div`
   padding: 10px 21px;
   color: var(--color-grey-500);
-  background-color: ${props => ('#f9f9f9')};
+  background-color: #f9f9f9;
   /* display: ${props => (props.isOpen ? 'block' : 'none')}; */
   opacity: 97%;
 `;
@@ -55,14 +56,13 @@ const Accordion = ({ title, subtitle, children, defaultExpanded, disabled, gutte
   };
 
   return (
-    // eslint-disable-next-line react/boolean-prop-naming
     <AccordionContainer data-testid="accordion" className='accordion-container' style={{ marginBottom: gutters ? '10px' : '0px' }} {...otherProps}>
       <AccordionHeader data-testid="accordion-header" onClick={toggleAccordion} disabled={disabled} {...otherProps}>
         <b>{title}</b> <Subtitle data-testid="subtitle">{subtitle}</Subtitle>
         {isOpen ? (<ArrowIcon><MdKeyboardArrowUp /></ArrowIcon>) : (<ArrowIcon><MdKeyboardArrowDown /></ArrowIcon>)}
       </AccordionHeader>
       {isOpen ? (
-        <AccordionContent data-testid="accordion-content" {...otherProps}>
+        <AccordionContent data-testid="accordion-content">
           {children}
         </AccordionContent>
       ) : null}
@@ -72,8 +72,9 @@ const Accordion = ({ title, subtitle, children, defaultExpanded, disabled, gutte
 
 Accordion.propTypes = {
   title: PropTypes.node.isRequired,
+  subtitle: PropTypes.string, 
   children: PropTypes.node.isRequired,
-  // defaultExpanded: PropTypes.bool,
+  defaultExpanded: PropTypes.bool,
   disabled: PropTypes.bool,
   bg: PropTypes.string,
   // isOpen: PropTypes.bool,
@@ -81,7 +82,7 @@ Accordion.propTypes = {
 };
 
 Accordion.defaultProps = {
-  // defaultExpanded: false,
+  defaultExpanded: false,
   disabled: false,
   gutters: false,
   // bg: '#f9f9f9'

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FaTimes } from 'react-icons/fa'; // Import the close icon from react-icons library
+// import { FaTimes } from 'react-icons/fa'; // Import the close icon from react-icons library
 
 const FileInput = styled.input.attrs({ type: "file" })`
   font-size: 1rem;

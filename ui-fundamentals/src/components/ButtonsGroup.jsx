@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
+import PropTypes from 'prop-types'; 
 import styled from 'styled-components';
 
 const StyledButtonGroup = styled.div`
@@ -23,5 +24,9 @@ const StyledButtonGroup = styled.div`
 function ButtonsGroup({ children, ...otherProps }) {
   return <StyledButtonGroup {...otherProps}>{children}</StyledButtonGroup>;
 }
+
+ButtonsGroup.propTypes = {
+  children: PropTypes.node, 
+};
 
 export default ButtonsGroup;

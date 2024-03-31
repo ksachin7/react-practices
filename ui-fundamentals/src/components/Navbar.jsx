@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
+import PropTypes from 'prop-types'; 
 import styled, { keyframes } from 'styled-components';
 
 const NavbarContainer = styled.nav`
@@ -37,21 +38,21 @@ const BrandText = styled.span`
   font-weight: bold;
 `;
 
-const NavbarMenu = styled.div`
-  display: flex;
-  align-items: center;
-`;
+// const NavbarMenu = styled.div`
+//   display: flex;
+//   align-items: center;
+// `;
 
-const NavbarMenuItem = styled.div`
-  margin-left: 1rem; /* Add margin between menu items */
-`;
+// const NavbarMenuItem = styled.div`
+//   margin-left: 1rem; 
+// `;
 
 const Navbar = ({ logo, title, color, children }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  // const toggleMenu = () => {
+  //   setIsMenuOpen(!isMenuOpen);
+  // };
 
   return (
     <NavbarContainer bg={color}>
@@ -62,6 +63,13 @@ const Navbar = ({ logo, title, color, children }) => {
       {children}
     </NavbarContainer>
   );
+};
+
+Navbar.propTypes = {
+  logo: PropTypes.string, 
+  title: PropTypes.string, 
+  color: PropTypes.string, 
+  children: PropTypes.node, 
 };
 
 export default Navbar;

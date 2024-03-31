@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 
@@ -55,11 +55,13 @@ ButtonIcon.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
   children: PropTypes.node.isRequired,
+  disabled: PropTypes.bool,
 };
 
 ButtonIcon.defaultProps = {
   color: 'darkGrey',
   size: 'md',
+  disabled: false,
 };
 
 export default ButtonIcon;

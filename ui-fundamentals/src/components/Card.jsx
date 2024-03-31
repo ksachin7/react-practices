@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -21,6 +21,7 @@ const Card = ({ children, width, className, ...otherProps }) => {
 };
 
 Card.propTypes = {
+  width: PropTypes.number,
   children: PropTypes.node,
   className: PropTypes.string,
 };

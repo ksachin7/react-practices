@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import { shallow, mount } from 'enzyme';
 import 'jest-styled-components';
 import AppGridContainer from '../components/AppGridContainer';

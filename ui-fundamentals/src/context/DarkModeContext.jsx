@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types'; 
 
 // Create a context for Dark Mode
 const DarkModeContext = createContext();
@@ -44,4 +46,9 @@ export const DarkModeProvider = ({ children }) => {
       {children}
     </DarkModeContext.Provider>
   );
+};
+
+// Define PropTypes for the DarkModeProvider component
+DarkModeProvider.propTypes = {
+  children: PropTypes.node.isRequired, // Children should be a React node
 };

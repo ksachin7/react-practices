@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import { shallow } from 'enzyme';
-import Table, { TableContainer, TableElement, TableHead, TableBody, TableRow, TableCell } from '../components/Table';
+import Table, { TableHead, TableBody, TableRow, TableCell } from '../components/Table';
 
 describe('Table component', () => {
   const headers = ['Header 1', 'Header 2', 'Header 3'];
