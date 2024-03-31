@@ -84,7 +84,6 @@ npm-debug.log*
 yarn-error.log*
 .pnp/
 .pnp.js
-.eslintrc.cjs
 
 # not-including
 ultimate-react-course-main/
