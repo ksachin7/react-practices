@@ -65,23 +65,51 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
       - name: Install dependencies and build project
         run: |
           cd ui-fundamentals
           npm install
           npm run build
 
-      - name: Netlify Deploy
-        uses: jsmrcaga/action-netlify-deploy@v2.1.0
-
-        with:
-          build_directory: ./ui-fundamentals/dist
-          NETLIFY_DEPLOY_TO_PROD: true
-
+      - name: Deploy to Netlify
+        run: |
+          cd ui-fundamentals
+          netlify deploy --prod --message "Deploy from GitHub Actions"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_DEPLOY_TO_PROD: true
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+  # deploy:
+  #   name: "Deploy to Netlify"
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+  #       with:
+  #         submodules: recursive
+
+  #     - name: Install dependencies and build project
+  #       run: |
+  #         cd ui-fundamentals
+  #         npm install
+  #         npm run build
+
+  #     - name: Netlify Deploy
+  #       uses: jsmrcaga/action-netlify-deploy@v2.1.0
+
+  #       with:
+  #         # build_directory: ./ui-fundamentals/dist
+  #         NETLIFY_DEPLOY_TO_PROD: true
+  #         deploy-message: "Deploy from GitHub Actions"
+
+  #       env:
+  #         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  #         NETLIFY_DEPLOY_TO_PROD: true
+  #         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
   # deploy_to_vercel:
   #   runs-on: ubuntu-latest
