@@ -73,8 +73,8 @@ jobs:
         uses: jsmrcaga/action-netlify-deploy@v2.1.0
 
         with:
-          publish-dir: ./ui-fundamentals/dist
-          production-deploy: true
+          build_directory: ./ui-fundamentals/dist
+          NETLIFY_DEPLOY_TO_PROD: true
 
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
