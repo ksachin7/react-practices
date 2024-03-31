@@ -26,7 +26,7 @@ jobs:
 
       # Step 3: Change directory to ui-fundamentals
       - name: Change directory to ui-fundamentals
-        run: cd ui-fundamentals
+        run: cd ui-fundamentals && ls -la
 
       # Step 4: Check for merge conflicts
       - name: Check for merge conflicts
@@ -42,19 +42,23 @@ jobs:
           fi
 
       # Step 5: Install project dependencies in ui-fundamentals
-      - name: Install dependencies
+      - name: Install dependencies in ui-fundamentals
+        working-directory: ui-fundamentals
         run: npm install
 
       # Step 6: Run tests in ui-fundamentals
-      - name: Run tests
+      - name: Run tests in ui-fundamentals
+        working-directory: ui-fundamentals
         run: npm test
 
       # Step 7: Lint code in ui-fundamentals
-      - name: Lint code
+      - name: Lint code in ui-fundamentals
+        working-directory: ui-fundamentals
         run: npm run lint # Make sure your project has ESLint configured and installed as a dependency
 
       # Step 8: Check commit format in ui-fundamentals
-      - name: Check commit format
+      - name: Check commit format in ui-fundamentals
+        working-directory: ui-fundamentals
         run: npm run commitlint # Assuming you have a script for commit message linting
 
       # Step 9: Update README with download and pull request counts
