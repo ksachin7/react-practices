@@ -2,8 +2,8 @@
 
 # **The wild oasis**
 
-**Status:** (incomplete) in progress...
-**Deployment:** [https://the-wild-oasis.netlify.app](https://the-wild-oasis-1ef4a.netlify.app/)
+**Status:** (incomplete) in progress...  
+**Deployment:** [the-wild-oasis.netlify.app](https://the-wild-oasis-1ef4a.netlify.app/)
 
 **Note:** Although a role-based access control (RBAC) system has not been implemented yet, guest users have been granted full control to showcase this project. In the future, RBAC will be implemented to restrict access based on user roles.
 
