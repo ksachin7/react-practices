@@ -65,9 +65,11 @@ jobs:
         with:
           submodules: recursive
 
-      # - name: Build Project
-      #   run: |
-      #     # Add commands to build your project artifacts here
+      - name: Install dependencies and build project
+        run: |
+          cd ui-fundamentals
+          npm install
+          npm run build
 
       - name: Netlify Deploy
         uses: jsmrcaga/action-netlify-deploy@v2.1.0
