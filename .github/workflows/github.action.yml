@@ -14,17 +14,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout code from the repository
+      # Step 1: Setup Node.js 20
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+
+      # Step 2: Checkout code from the repository
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          node-version: "14"
 
-      # Step 2: Attempt to merge changes from 'main' into the current branch
-      - name: Merge main into the current branch
-        run: git merge --no-commit --no-ff origin/main || true
+      # Step 3: Change directory to ui-fundamentals
+      - name: Change directory to ui-fundamentals
+        run: cd ui-fundamentals
 
-      # Step 3: Check for merge conflicts
+      # Step 4: Check for merge conflicts
       - name: Check for merge conflicts
         run: |
           # Check if there are any merge conflicts
@@ -37,38 +41,21 @@ jobs:
             exit 1
           fi
 
-      # Step 4: Install project dependencies
+      # Step 5: Install project dependencies in ui-fundamentals
       - name: Install dependencies
         run: npm install
 
-      # Step 5: Run tests
+      # Step 6: Run tests in ui-fundamentals
       - name: Run tests
         run: npm test
 
-      # Step 6: Lint code
+      # Step 7: Lint code in ui-fundamentals
       - name: Lint code
-        run: |
-          # Example using ESLint
-          npm run lint  # Make sure your project has ESLint configured and installed as a dependency
+        run: npm run lint # Make sure your project has ESLint configured and installed as a dependency
 
-      # Step 7: Check commit format
+      # Step 8: Check commit format in ui-fundamentals
       - name: Check commit format
-        run: |
-          # Add scripts to check commit message format, linting, etc.
-          # For example, you could use a tool like commitlint
-          npm run commitlint  # Assuming you have a script for commit message linting
-
-      # Step 8: Check if the PR can be merged
-      - name: PR Merge Check
-        id: merge-check
-        run: |
-          # Add checks to determine whether the PR can be merged
-          # For example, you might want to run additional tests or check approvals
-          if [additional checks pass]; then
-            echo "::set-output name=should_merge::true"
-          else
-            echo "::set-output name=should_merge::false"
-          fi
+        run: npm run commitlint # Assuming you have a script for commit message linting
 
       # Step 9: Update README with download and pull request counts
       - name: Update README with counts
@@ -81,28 +68,23 @@ jobs:
           git commit -m "Update README with latest download and pull request counts" || echo "No changes to commit"
           git push
 
-  # Deploy to Vercel if the merge check is successful
   deploy_to_vercel:
     runs-on: ubuntu-latest
+    needs: build
     steps:
+      # Checkout code including submodules
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          path: "https://github.com/ksachin7/React-practices/tree/initial/ui-fundamentals" # Specify the directory where the selected project resides
-          # the-wild-oasis: "https://github.com/ksachin7/React-practices/tree/initial/the-wild-oasis"
+          submodules: recursive
 
-      # Additional steps specific to your project, such as installing dependencies, running tests, etc.
-      - name: Deploy ui-fundamentals to Vercel
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.checkout.outputs.path == 'https://github.com/ksachin7/React-practices/tree/initial/ui-fundamentals'
+      # Change directory to ui-fundamentals
+      - name: Change directory to ui-fundamentals
+        run: cd ui-fundamentals
+
+      # Deploy ui-fundamentals to Vercel
+      - name: Deploy to Vercel
         uses: amondnet/vercel-action@v2
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-project-name: ui-fundamentals
-
-      # - name: Deploy the-wild-oasis to Vercel
-      #   if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.checkout.outputs.path == 'https://github.com/ksachin7/React-practices/tree/initial/the-wild-oasis'
-      #   uses: amondnet/vercel-action@v2
-      #   with:
-      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
-      #     # vercel-org-id: your_org_id
-      #     vercel-project-name: the-wild-oasis
