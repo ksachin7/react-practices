@@ -14,11 +14,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Git User Email
-        run: git config --global user.email
+      # - name: Print Git User Email
+      #   run: git config --global user.email
 
-      - name: Print Git User Name
-        run: git config --global user.name
+      # - name: Print Git User Name
+      #   run: git config --global user.name
+
       # Step 1: Setup Node.js 20
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -70,15 +71,15 @@ jobs:
       #   run: npm run commitlint # Assuming you have a script for commit message linting
 
       # Step 9: Update README with download and pull request counts
-      - name: Update README with counts
-        run: |
-          DOWNLOAD_COUNT=$(curl -s "https://api.github.com/repos/ksachin7/React-practices/releases" | jq '.[] | .assets | .[] | .download_count' | jq -s add)
-          PULL_REQUEST_COUNT=$(curl -s "https://api.github.com/repos/ksachin7/React-practices/pulls?state=all" | jq 'length')
-          sed -i "s/^### Download Count:.*/### Download Count: $DOWNLOAD_COUNT/" README.md
-          sed -i "s/^### Pull Request Count:.*/### Pull Request Count: $PULL_REQUEST_COUNT/" README.md
-          git add README.md
-          git commit -m "Update README with latest download and pull request counts" || echo "No changes to commit"
-          git push
+      # - name: Update README with counts
+      #   run: |
+      #     DOWNLOAD_COUNT=$(curl -s "https://api.github.com/repos/ksachin7/React-practices/releases" | jq '.[] | .assets | .[] | .download_count' | jq -s add)
+      #     PULL_REQUEST_COUNT=$(curl -s "https://api.github.com/repos/ksachin7/React-practices/pulls?state=all" | jq 'length')
+      #     sed -i "s/^### Download Count:.*/### Download Count: $DOWNLOAD_COUNT/" README.md
+      #     sed -i "s/^### Pull Request Count:.*/### Pull Request Count: $PULL_REQUEST_COUNT/" README.md
+      #     git add README.md
+      #     git commit -m "Update README with latest download and pull request counts" || echo "No changes to commit"
+      #     git push
 
   deploy_to_vercel:
     runs-on: ubuntu-latest
