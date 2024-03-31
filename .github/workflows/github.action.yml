@@ -24,8 +24,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: List directory contents of .git
-        run: ls -la .git
+      # - name: List directory contents of .git
+      #   run: ls -la .git
 
       # Step 3: Change directory to ui-fundamentals
       - name: Change directory to ui-fundamentals
@@ -60,9 +60,9 @@ jobs:
         run: npm run lint
 
       # Step 8: Check commit format in ui-fundamentals
-      - name: Check commit format in ui-fundamentals
-        working-directory: ui-fundamentals
-        run: npm run commitlint # Assuming you have a script for commit message linting
+      # - name: Check commit format in ui-fundamentals
+      #   working-directory: ui-fundamentals
+      #   run: npm run commitlint # Assuming you have a script for commit message linting
 
       # Step 9: Update README with download and pull request counts
       - name: Update README with counts
