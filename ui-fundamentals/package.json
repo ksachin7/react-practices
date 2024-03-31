@@ -8,6 +8,7 @@
     "test": "jest",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "commitlint": "commitlint -e $GIT_PARAMS",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -24,6 +25,8 @@
     "@babel/preset-env": "^7.24.3",
     "@babel/preset-react": "^7.24.1",
     "@cfaester/enzyme-adapter-react-18": "^0.7.1",
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react": "^4.2.1",
