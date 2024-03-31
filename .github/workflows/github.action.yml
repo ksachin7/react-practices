@@ -1,6 +1,5 @@
-name: Continuous Integration and README Update
+name: Continuous Integration and Deployment to Vercel
 
-# Define the events that trigger this workflow
 on:
   push:
     branches:
@@ -14,12 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # - name: Print Git User Email
-      #   run: git config --global user.email
-
-      # - name: Print Git User Name
-      #   run: git config --global user.name
-
       # Step 1: Setup Node.js 20
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -29,9 +22,6 @@ jobs:
       # Step 2: Checkout code from the repository
       - name: Checkout code
         uses: actions/checkout@v2
-
-      # - name: List directory contents of .git
-      #   run: ls -la .git
 
       # Step 3: Change directory to ui-fundamentals
       - name: Change directory to ui-fundamentals
@@ -65,52 +55,35 @@ jobs:
         working-directory: ui-fundamentals
         run: npm run lint
 
-      # Step 8: Check commit format in ui-fundamentals
-      # - name: Check commit format in ui-fundamentals
-      #   working-directory: ui-fundamentals
-      #   run: npm run commitlint # Assuming you have a script for commit message linting
+  deploy_to_vercel:
+    runs-on: ubuntu-latest
+    needs: build
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      # Checkout code including submodules
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
 
-      # Step 9: Update README with download and pull request counts
-      # - name: Update README with counts
-      #   run: |
-      #     DOWNLOAD_COUNT=$(curl -s "https://api.github.com/repos/ksachin7/React-practices/releases" | jq '.[] | .assets | .[] | .download_count' | jq -s add)
-      #     PULL_REQUEST_COUNT=$(curl -s "https://api.github.com/repos/ksachin7/React-practices/pulls?state=all" | jq 'length')
-      #     sed -i "s/^### Download Count:.*/### Download Count: $DOWNLOAD_COUNT/" README.md
-      #     sed -i "s/^### Pull Request Count:.*/### Pull Request Count: $PULL_REQUEST_COUNT/" README.md
-      #     git add README.md
-      #     git commit -m "Update README with latest download and pull request counts" || echo "No changes to commit"
-      #     git push
+      # Change directory to ui-fundamentals
+      - name: Change directory to ui-fundamentals
+        run: cd ui-fundamentals
 
-       deploy_to_vercel:
-        runs-on: ubuntu-latest
-        needs: build
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-        steps:
-          # Checkout code including submodules
-          - name: Checkout code
-            uses: actions/checkout@v2
-            with:
-              submodules: recursive
-      
-          # Change directory to ui-fundamentals
-          - name: Change directory to ui-fundamentals
-            run: cd ui-fundamentals
-      
-          # Install Vercel CLI
-          - name: Install Vercel CLI
-            run: npm install --global vercel@latest
-      
-          # Pull Vercel Environment Information
-          - name: Pull Vercel Environment Information
-            run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      
-          # Build Project Artifacts
-          - name: Build Project Artifacts
-            run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-      
-          # Deploy Project Artifacts to Vercel
-          - name: Deploy Project Artifacts to Vercel
-            run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
-      
+      # Install Vercel CLI
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      # Pull Vercel Environment Information
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      # Build Project Artifacts
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      # Deploy Project Artifacts to Vercel
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
