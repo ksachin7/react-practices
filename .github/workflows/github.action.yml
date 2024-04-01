@@ -116,7 +116,7 @@ jobs:
             # fi
 
             # Check if there are commits in the branch
-            if git diff --name-only HEAD^ HEAD; then
+            if git diff --name-only HEAD^ HEAD --; then
               echo "New files added/updated in $dir. Proceeding with deployment."
               npm install
               npm run build
