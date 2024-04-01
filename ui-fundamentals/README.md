@@ -1,6 +1,6 @@
 # UI Fundamentals
 
-![Status](https://img.shields.io/badge/Status-In%20Progress-yellow?style=flat-square) [![Netlify Status](https://img.shields.io/badge/Netlify-Success-brightgreen?style=flat-square&logo=netlify)](https://elegantwebui.netlify.app)
+![Status](https://img.shields.io/badge/Status-In%20Progress-yellow?style=flat-square) [![Netlify Status](https://img.shields.io/badge/Netlify-Success-brightgreen?style=flat-square&logo=netlify)](https://elegantwebui.netlify.app)  
 <!-- [![Netlify Status](https://img.shields.io/badge/Netlify-Success-brightgreen?style=flat-square&logo=netlify)](https://app.netlify.com/sites/elegantwebui) -->
 <!-- deployment: [elegantui.netlify.app](https://elegantwebui.netlify.app)   -->
 This project aimed to create reusable UI components using React and styled-components. It includes a variety of components such as buttons, accordions, select dropdowns, spinners, and more. The components are designed to be highly customizable and support dark mode.  

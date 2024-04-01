@@ -1,7 +1,7 @@
 
 # Movie Search React-Vite Application
 
-[![Netlify Status](https://img.shields.io/badge/Netlify-Deployment-brightgreen?style=flat-square&logo=netlify)](https://movies-02bf70.netlify.app)
+[![Netlify Status](https://img.shields.io/badge/Netlify-Deployment-brightgreen?style=flat-square&logo=netlify)](https://movies-02bf70.netlify.app)  
 This is a simple Movie Search App built using React. It allows users to search for movies, view movie details, and add movies to a watchlist. This README provides an overview of the app's features, installation instructions, folder structure, best practices, data flow, encountered problems, and suggestions for improvement.
 
 Here's a short summary of the various technologies and tools you've used in your project:
