@@ -15,16 +15,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Change directory to ui-fundamentals
-        run: cd ui-fundamentals
+      # - name: Change directory to ui-fundamentals
+      #   run: cd ui-fundamentals && ls -a
 
       - name: Install dependencies
+        working-directory: ui-fundamentals
         run: npm install
 
       - name: Lint code
+        working-directory: ui-fundamentals
         run: npm run lint
 
       - name: Test code
+        working-directory: ui-fundamentals
         run: npm test
 
   # for future updates
@@ -81,8 +84,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Change directory to react-practices
-        run: cd react-practices
+      # - name: Change directory to react-practices
+      #   run: cd react-practices
 
       - name: Check for merge conflicts in all projects
         run: |
