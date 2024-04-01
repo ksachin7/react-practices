@@ -12,7 +12,7 @@ module.exports = {
     mode: "development",
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: "bundle.[contenthash].js",
+        filename: "bundle.[name].[contenthash].js",
         // publicPath: "/", // required for font loading on historyApiFallback
     },
     devServer: {
@@ -57,9 +57,7 @@ module.exports = {
                     },
                     {
                         loader: 'image-webpack-loader',
-                        options: {
-                            // image-webpack-loader options
-                        },
+                        options: {},
                     },
                 ]
             }
@@ -70,16 +68,8 @@ module.exports = {
         ],
     },
     resolve: {
-        modules: ['node_modules'],
+        // modules: ['node_modules', 'src'],
         extensions: ["*", ".js", ".jsx", ".ts", ".tsx"],   // specifies which file extensions Webpack should resolve.
-        // modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-        // alias: {                            // resolve.alias allows you to specify custom module paths. 
-        //     'react-dom': '@hot-loader/react-dom',
-        //     'react-dom': '@hot-loader/react-dom/client',
-        //     'react-router-dom': path.resolve(__dirname, 'node_modules/react-router-dom'),
-        //      'react-router-dom': '@hot-loader/react-router-dom', // Use hot loader for React Router
-        // '@supabase': path.resolve(__dirname, 'node_modules', '@supabase', 'supabase-js'),
-        // },
     },
     plugins: [
         // new BundleAnalyzerPlugin(),
@@ -89,12 +79,14 @@ module.exports = {
             template: "./public/index.html",
             filename: 'index.html', // Output filename
             debug: true, // Enable debug mode
+            // excludeChunks: ['node_modules'], // Exclude node_modules chunk
         }),
-        // new CopyWebpackPlugin({
-        //     patterns: [
-        //         { from: 'public', to: '' }, // Copy all files from the 'public' folder to the root of the 'dist' folder
-        //     ],
-        // }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'public', to: '', globOptions: { ignore: ['**/index.html'] } }, // Exclude index.html
+            ],
+        }),
+        
         // new ESLintPlugin({
         //     extensions: ['js', 'jsx', 'ts', 'tsx'],
         // Other options...
