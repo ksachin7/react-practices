@@ -111,8 +111,8 @@ jobs:
             #   echo "New files added/updated in $dir. Proceeding with deployment."
 
               # Print all the files changed between the parent commit and the current commit
-              echo "Files changed:"
-              git diff --name-only HEAD^ HEAD -- $dir
+              # echo "Files changed:"
+              # git diff --name-only HEAD^ HEAD -- $dir
 
               npm install
               npm run build
