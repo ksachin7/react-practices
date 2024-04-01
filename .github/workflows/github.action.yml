@@ -107,8 +107,8 @@ jobs:
             cd $dir
 
             # Check if there are commits in the branch
-            if git diff --name-only HEAD^ HEAD -- $dir; then
-              echo "New files added/updated in $dir. Proceeding with deployment."
+            # if git diff --name-only HEAD^ HEAD -- $dir; then
+            #   echo "New files added/updated in $dir. Proceeding with deployment."
 
               # Print all the files changed between the parent commit and the current commit
               echo "Files changed:"
@@ -133,9 +133,9 @@ jobs:
                   ;;
               esac
               netlify deploy --prod --message "Deploy from GitHub Actions" --dir=dist --site=$NETLIFY_SITE_ID
-            else
-              echo "No new files added/updated in $dir. Skipping deployment."
-            fi
+            # else
+            #   echo "No new files added/updated in $dir. Skipping deployment."
+            # fi
             cd ..
           done
         env:
