@@ -1,10 +1,7 @@
 
 # Movie Search React-Vite Application
 
-**Deployment**: [https://movies.netlify.app](https://movies-02bf70.netlify.app)
-
-## Overview
-
+[![Netlify Status](https://img.shields.io/badge/Netlify-Deployment-brightgreen?style=flat-square&logo=netlify)](https://movies-02bf70.netlify.app)
 This is a simple Movie Search App built using React. It allows users to search for movies, view movie details, and add movies to a watchlist. This README provides an overview of the app's features, installation instructions, folder structure, best practices, data flow, encountered problems, and suggestions for improvement.
 
 Here's a short summary of the various technologies and tools you've used in your project:
@@ -22,7 +19,7 @@ Here's a short summary of the various technologies and tools you've used in your
 6. **Styling**: Styling is done using a combination of SCSS (Sass) for stylesheets and the Styled Components library for creating styled React components.
 
 7. **Error Handling**: `Error Handling`
-   
+
 These are some of the key technologies and practices employed in the project. It showcases a wide range of tools and techniques used to create a functional and interactive React application.
 
 ## React + Vite
@@ -33,7 +30,6 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
 
 ## Features
 
