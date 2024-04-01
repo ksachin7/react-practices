@@ -1,6 +1,6 @@
 # UI Fundamentals
 
-**Status:** in progress...
+**Status:** in progress...  
 **deployment:** [elegantui.netlify.app](https://elegantwebui.netlify.app)
 This project aimed to create reusable UI components using React and styled-components. It includes a variety of components such as buttons, accordions, select dropdowns, spinners, and more. The components are designed to be highly customizable and support dark mode.
 
