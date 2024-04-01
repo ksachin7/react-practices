@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Change directory to ui-fundamentals
-        run: cd react-practices/ui-fundamentals
+        run: cd ui-fundamentals
 
       - name: Install dependencies
         run: npm install
