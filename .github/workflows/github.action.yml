@@ -1,5 +1,3 @@
-name: Continuous Integration and Deployment to Vercel
-
 on:
   push:
     branches:
@@ -9,75 +7,111 @@ on:
       - main
 
 jobs:
-  build:
+  lint_and_test_ui_fundamentals:
+    name: "Lint and Test UI Fundamentals"
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Setup Node.js 20
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "20"
-
-      # Step 2: Checkout code from the repository
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 3: Change directory to ui-fundamentals
       - name: Change directory to ui-fundamentals
-        run: cd ui-fundamentals && ls -la
+        run: cd react-practices/ui-fundamentals
 
-      # Step 4: Check for merge conflicts
-      - name: Check for merge conflicts
-        run: |
-          # Check if there are any merge conflicts
-          if git diff --quiet; then
-            echo "No merge conflicts found"
-          else
-            # Display merge conflicts and fail the workflow
-            echo "Merge conflicts found. Please resolve conflicts and try again."
-            git status
-            exit 1
-          fi
-
-      # Step 5: Install project dependencies in ui-fundamentals
-      - name: Install dependencies in ui-fundamentals
-        working-directory: ui-fundamentals
+      - name: Install dependencies
         run: npm install
 
-      # Step 6: Run tests in ui-fundamentals
-      - name: Run tests in ui-fundamentals
-        working-directory: ui-fundamentals
-        run: npm test
-
-      # Step 7: Lint code in ui-fundamentals
-      - name: Lint code in ui-fundamentals
-        working-directory: ui-fundamentals
+      - name: Lint code
         run: npm run lint
 
-  deploy:
-    name: "Deploy to Netlify"
+      - name: Test code
+        run: npm test
+
+  # for future updates
+  # lint_and_test_the_wild_oasis:
+  #   name: "Lint and Test The Wild Oasis"
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+
+  #     - name: Change directory to the-wild-oasis
+  #       run: cd react-practices/the-wild-oasis
+
+  #     - name: Install dependencies
+  #       run: npm install
+
+  #     - name: Lint code
+  #       run: npm run lint
+
+  #     - name: Test code
+  #       run: npm test
+
+  # lint_and_test_movies:
+  #   name: "Lint and Test Movies"
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+
+  #     - name: Change directory to movies
+  #       run: cd react-practices/movies
+
+  #     - name: Install dependencies
+  #       run: npm install
+
+  #     - name: Lint code
+  #       run: npm run lint
+
+  #     - name: Test code
+  #       run: npm test
+
+  build_and_deploy:
+    name: "Build and Deploy to Netlify"
     runs-on: ubuntu-latest
+    needs: [
+        lint_and_test_ui_fundamentals,
+        # lint_and_test_the_wild_oasis,
+        # lint_and_test_movies,
+      ]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          submodules: recursive
 
-      - name: Install Netlify CLI
-        run: npm install -g netlify-cli
+      - name: Change directory to react-practices
+        run: cd react-practices
 
-      - name: Install dependencies and build project
+      - name: Check for merge conflicts in all projects
         run: |
-          cd ui-fundamentals
-          npm install
-          npm run build
+          for dir in ui-fundamentals the-wild-oasis movies; do
+            cd $dir
+            if git diff --quiet; then
+              echo "No merge conflicts found in $dir"
+            else
+              echo "Merge conflicts found in $dir. Please resolve conflicts and try again."
+              git status
+              exit 1
+            fi
+            cd ..
+          done
 
-      - name: Deploy to Netlify
+      - name: Deploy if conditions met
         run: |
-          cd ui-fundamentals
-          netlify deploy --prod --message "Deploy from GitHub Actions" --dir=dist
+          for dir in ui-fundamentals the-wild-oasis movies; do
+            cd $dir
+            if [[ $(git diff --name-only HEAD^ HEAD) ]]; then
+              echo "New files added/updated in $dir. Proceeding with deployment."
+              npm install
+              npm run build
+              netlify deploy --prod --message "Deploy from GitHub Actions" --dir=dist
+            else
+              echo "No new files added/updated in $dir. Skipping deployment."
+            fi
+            cd ..
+          done
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
