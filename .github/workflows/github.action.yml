@@ -104,8 +104,8 @@ jobs:
       - name: Deploy if conditions met
         run: |
           for dir in ui-fundamentals the-wild-oasis movies; do
-            cd $dir
             if [[ $(git diff --name-only HEAD^ HEAD) ]]; then
+              cd $dir
               echo "New files added/updated in $dir. Proceeding with deployment."
               npm install
               npm run build
