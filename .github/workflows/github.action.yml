@@ -104,30 +104,36 @@ jobs:
       - name: Deploy if conditions met
         run: |
           for dir in ui-fundamentals the-wild-oasis movies; do
-            if [[ $(git diff --name-only HEAD^ HEAD) ]]; then
-              cd $dir
-              echo "New files added/updated in $dir. Proceeding with deployment."
-              npm install
-              npm run build
-              # Adjust the NETLIFY_SITE_ID according to the directory/project
-              case $dir in
-                "ui-fundamentals")
-                  NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID_UI_FUNDAMENTALS }}"
-                  ;;
-                "the-wild-oasis")
-                  NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID_THE_WILD_OASIS }}"
-                  ;;
-                "movies")
-                  NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID_MOVIES }}"
-                  ;;
-                *)
-                  echo "Unknown project directory: $dir"
-                  exit 1
-                  ;;
-              esac
-              netlify deploy --prod --message "Deploy from GitHub Actions" --dir=dist --site=$NETLIFY_SITE_ID
+            cd $dir
+            pwd
+            # Check if there are commits in the branch
+            if [[ $(git rev-parse --verify HEAD^) ]]; then
+              if [[ $(git diff --name-only HEAD^ HEAD) ]]; then
+                echo "New files added/updated in $dir. Proceeding with deployment."
+                npm install
+                npm run build
+                # Adjust the NETLIFY_SITE_ID according to the directory/project
+                case $dir in
+                  "ui-fundamentals")
+                    NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID_UI_FUNDAMENTALS }}"
+                    ;;
+                  "the-wild-oasis")
+                    NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID_THE_WILD_OASIS }}"
+                    ;;
+                  "movies")
+                    NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID_MOVIES }}"
+                    ;;
+                  *)
+                    echo "Unknown project directory: $dir"
+                    exit 1
+                    ;;
+                esac
+                netlify deploy --prod --message "Deploy from GitHub Actions" --dir=dist --site=$NETLIFY_SITE_ID
+              else
+                echo "No new files added/updated in $dir. Skipping deployment."
+              fi
             else
-              echo "No new files added/updated in $dir. Skipping deployment."
+              echo "No commits in $dir. Skipping deployment."
             fi
             cd ..
           done
