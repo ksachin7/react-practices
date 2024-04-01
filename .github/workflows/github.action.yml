@@ -106,8 +106,10 @@ jobs:
           for dir in ui-fundamentals the-wild-oasis movies; do
             cd $dir
             pwd
+            # Verify the parent commit
+            git rev-parse --verify HEAD^
             # Check if there are commits in the branch
-            if [[ $(git rev-parse --verify HEAD^) ]]; then
+            # if [[ $(git rev-parse --verify HEAD^) ]]; then
               if [[ $(git diff --name-only HEAD^ HEAD) ]]; then
                 echo "New files added/updated in $dir. Proceeding with deployment."
                 npm install
@@ -132,9 +134,9 @@ jobs:
               else
                 echo "No new files added/updated in $dir. Skipping deployment."
               fi
-            else
-              echo "No commits in $dir. Skipping deployment."
-            fi
+            # else
+            #   echo "No commits in $dir. Skipping deployment."
+            # fi
             cd ..
           done
         env:
