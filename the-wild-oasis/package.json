@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "webpack serve --mode development --open",
     "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "test": "echo \"no test specified!\" && exit 1",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint src --fix"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +21,7 @@
     "date-fns": "^2.30.0",
     "eslint-plugin-styled-components-a11y": "^2.1.32",
     "node-sass": "^9.0.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.0.13",
