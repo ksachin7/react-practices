@@ -105,26 +105,14 @@ jobs:
         run: |
           for dir in ui-fundamentals the-wild-oasis movies; do
             cd $dir
-            # pwd
-
-            # Count the number of commits in the current branch
-            num_commits=$(git log --oneline | wc -l)
-            echo "Number of commits in $dir: $num_commits"
-
-            # Check if there are any commits in the current branch
-            if [[ $num_commits -eq 0 ]]; then
-                echo "No commits in $dir. Skipping deployment."
-                cd ..
-                continue
-            fi
 
             # Check if there are commits in the branch
-            if git diff --name-only HEAD^..HEAD -- | grep -q .; then
+            if git diff --name-only HEAD^ HEAD -- $dir; then
               echo "New files added/updated in $dir. Proceeding with deployment."
 
               # Print all the files changed between the parent commit and the current commit
               echo "Files changed:"
-              git diff --name-only HEAD^..HEAD
+              git diff --name-only HEAD^ HEAD -- $dir
 
               npm install
               npm run build
