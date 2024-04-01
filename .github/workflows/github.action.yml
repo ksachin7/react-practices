@@ -106,8 +106,14 @@ jobs:
           for dir in ui-fundamentals the-wild-oasis movies; do
             cd $dir
             pwd
-            # Verify the parent commit
-            git rev-parse --verify HEAD^
+            # Check if there is a parent commit
+            parent_commit=$(git rev-parse --verify HEAD^ 2>/dev/null)
+            if [[ -z "$parent_commit" ]]; then
+                echo "No parent commit found in $dir. Skipping deployment."
+                cd ..
+                continue
+            fi
+
             # Check if there are commits in the branch
             # if [[ $(git rev-parse --verify HEAD^) ]]; then
               if [[ $(git diff --name-only HEAD^ HEAD) ]]; then
