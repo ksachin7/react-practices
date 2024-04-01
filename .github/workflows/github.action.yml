@@ -109,7 +109,23 @@ jobs:
               echo "New files added/updated in $dir. Proceeding with deployment."
               npm install
               npm run build
-              netlify deploy --prod --message "Deploy from GitHub Actions" --dir=dist
+              # Adjust the NETLIFY_SITE_ID according to the directory/project
+              case $dir in
+                "ui-fundamentals")
+                  NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID_UI_FUNDAMENTALS }}"
+                  ;;
+                "the-wild-oasis")
+                  NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID_THE_WILD_OASIS }}"
+                  ;;
+                "movies")
+                  NETLIFY_SITE_ID="${{ secrets.NETLIFY_SITE_ID_MOVIES }}"
+                  ;;
+                *)
+                  echo "Unknown project directory: $dir"
+                  exit 1
+                  ;;
+              esac
+              netlify deploy --prod --message "Deploy from GitHub Actions" --dir=dist --site=$NETLIFY_SITE_ID
             else
               echo "No new files added/updated in $dir. Skipping deployment."
             fi
@@ -117,7 +133,6 @@ jobs:
           done
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
   # deploy:
   #   name: "Deploy to Netlify"
