@@ -79,7 +79,7 @@ function SalesChart() {
             unit='₹'
             type='monotone'
             stroke={colors.totalSales.stroke}
-            strokeWidth={2}
+            strokeWidth={1}
             fill={colors.totalSales.fill}
           />
           <Area
@@ -88,7 +88,7 @@ function SalesChart() {
             unit='₹'
             type='monotone'
             stroke={colors.extrasSales.stroke}
-            strokeWidth={2}
+            strokeWidth={1}
             fill={colors.extrasSales.fill}
           />
         </AreaChart>
