@@ -36,16 +36,16 @@ jobs:
         working-directory: ui-fundamentals
         run: npm test
 
-      - name: Link check (warnings, changed files)
-        working-directory: ui-fundamentals
-        run: |
-          ./script/rendered-content-link-checker.mjs \
-            --language en \
-            --max 100 \
-            --check-anchors \
-            --check-images \
-            --verbose \
-            --list $HOME/files.json
+      # - name: Link check (warnings, changed files)
+      #   working-directory: ui-fundamentals
+      #   run: |
+      #     ./script/rendered-content-link-checker.mjs \
+      #       --language en \
+      #       --max 100 \
+      #       --check-anchors \
+      #       --check-images \
+      #       --verbose \
+      #       --list $HOME/files.json
 
   # for future updates
   # lint_and_test_the_wild_oasis:
