@@ -5,6 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -50,7 +51,7 @@ module.exports = {
                 test: /\.(png|jpe?g|gif|svg)$/i,
                 type: 'asset/resource',
                 generator: {
-                  filename: 'assets/[name][ext]',
+                    filename: 'assets/[name][ext]',
                 },
             }
         ],
@@ -63,38 +64,41 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new MiniCssExtractPlugin({ filename: "styles.css" }),
         new HtmlWebpackPlugin({
             template: "./public/index.html",
             filename: 'index.html',
             debug: true,
         }),
+        new MiniCssExtractPlugin({ filename: "styles.css" }),
         new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: ['**/*', '!assets/*', '!.old-bundles/**'],
+            // cleanOnceBeforeBuildPatterns: ['**/*', '!assets/*', '!.old-bundles/**'],
         }),
         new CopyWebpackPlugin({
             patterns: [
                 {
                     from: 'public',
-                    to: 'assets',  
+                    to: 'assets',
                     globOptions: {
-                        ignore: ['**/index.html'],  
+                        ignore: ['index.html'],
                     },
                 },
-                {
-                    from: 'dist',
-                    to: '.old-bundles',
-                    globOptions: {
-                        ignore: [
-                            'index.html',
-                            '**/assets/**',          
-                            '**/.old-bundles/**',   
-                            'bundle.*.js',          
-                        ],
-                    },
-                },
+                // {
+                    // from: 'dist',
+                    // to: 'old-bundles',
+                    // globOptions: {
+                    //     ignore: [
+                    //         'index.html',
+                    //         '**/assets/**',
+                    //         '**/.old-bundles/**',
+                    //         'bundle.*.js',
+                    //     ],
+                    // },
+                // },
             ],
         }),
+        // new ESLintPlugin({
+        //     extensions: ['js', 'jsx']
+        // })
     ],
     optimization: {
         minimize: true,
