@@ -9,7 +9,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
-    mode: "development",
+    mode: "production",
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: "bundle.[name].[contenthash].js",
@@ -77,7 +77,7 @@ module.exports = {
             patterns: [
                 {
                     from: 'public',
-                    to: 'assets',
+                    to: '',
                     globOptions: {
                         ignore: ['index.html'],
                     },
