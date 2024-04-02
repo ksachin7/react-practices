@@ -104,7 +104,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "20"
           # cache: npm
 
       # - name: Change directory to react-practices
@@ -124,11 +124,11 @@ jobs:
             cd ..
           done
 
-      - name: Gather files changed
-        id: gather_files_changed
-        uses: trilom/file-changes-action@a6ca26c14274c33b15e6499323aac178af06ad4b
-        with:
-          fileOutput: "json"
+      # - name: Gather files changed
+      #   id: gather_files_changed
+      #   uses: trilom/file-changes-action@a6ca26c14274c33b15e6499323aac178af06ad4b
+      #   with:
+      #     fileOutput: "json"
 
       - name: Deploy if conditions met
         run: |
@@ -136,12 +136,12 @@ jobs:
             cd $dir
 
             # Check if there are changed files
-            if [ -s $HOME/files.json ]; then
-              echo "Files changed in $dir. Proceeding with deployment..."
+            # if [ -s $HOME/files.json ]; then
+            #   echo "Files changed in $dir. Proceeding with deployment..."
 
               # Print all the files changed
-              echo "Files changed:"
-              cat $HOME/files.json
+              # echo "Files changed:"
+              # cat $HOME/files.json
 
               npm install
               npm run build
@@ -163,14 +163,14 @@ jobs:
                   ;;
               esac
               netlify deploy --prod --message "Deploy from GitHub Actions" --dir=dist --site=$NETLIFY_SITE_ID
-            else
-              echo "No files changed in $dir. Skipping deployment."
-            fi
+            # else
+            #   echo "No files changed in $dir. Skipping deployment."
+            # fi
             cd ..
           done
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          HOME: ${{ github.workspace }}
+          # HOME: ${{ github.workspace }}
 
   # deploy:
   #   name: "Deploy to Netlify"
