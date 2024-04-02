@@ -104,7 +104,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 16.13.x
+          node-version: 20
           # cache: npm
 
       # - name: Change directory to react-practices
