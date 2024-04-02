@@ -17,7 +17,7 @@
                 "minify": true, // Enable CSS minification
                 "transpileTemplateLiterals": true, // Transpile tagged template literals
                 "pure": true, // Enable pure annotation for dead code elimination
-                "namespace": "my-app" // Add namespace to ensure class name uniqueness
+                "namespace": "the-wild-oasis" // Add namespace to ensure class name uniqueness
             }
         ]
     ]
