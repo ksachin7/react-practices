@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 16.13.x
-          cache: npm
+          # cache: npm
 
       # - name: Change directory to ui-fundamentals
       #   run: cd ui-fundamentals && ls -a
@@ -37,6 +37,7 @@ jobs:
         run: npm test
 
       - name: Link check (warnings, changed files)
+        working-directory: ui-fundamentals
         run: |
           ./script/rendered-content-link-checker.mjs \
             --language en \
