@@ -13,7 +13,9 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          node-version: "20"
 
       # - name: Change directory to ui-fundamentals
       #   run: cd ui-fundamentals && ls -a
@@ -83,6 +85,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          node-version: "20"
 
       # - name: Change directory to react-practices
       #   run: cd react-practices
