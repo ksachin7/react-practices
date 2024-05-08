@@ -6,6 +6,7 @@
 This project aimed to create reusable UI components using React and styled-components. It includes a variety of components such as buttons, accordions, select dropdowns, spinners, and more. The components are designed to be highly customizable and support dark mode.  
 <!-- [![Netlify deploy Status](https://api.netlify.com/api/v1/badges/bd99dd9b-1e10-4db3-a191-a5450077418e/deploy-status)](https://app.netlify.com/sites/profound-sprite-2b2255/deploys) -->
 
+[![Repository](https://img.shields.io/badge/Repository-Updated--repository-blue?style=flat-square&logo=github)](https://github.com/ksachin7/react-testing-cicd)  
 ![Preview: ](./src/assets/preview.gif)  
 
 ## Features
