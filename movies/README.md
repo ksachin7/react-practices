@@ -4,6 +4,8 @@
 [![Netlify Status](https://img.shields.io/badge/Netlify-Deployment-brightgreen?style=flat-square&logo=netlify)](https://movies-02bf70.netlify.app)  
 This is a simple Movie Search App built using React. It allows users to search for movies, view movie details, and add movies to a watchlist. This README provides an overview of the app's features, installation instructions, folder structure, best practices, data flow, encountered problems, and suggestions for improvement.
 
+![Alt Text](./src/assets/images/app-screenshots.gif)
+
 Here's a short summary of the various technologies and tools you've used in your project:
 
 1. **React**: This application is built using the React library, a popular JavaScript library for creating user interfaces.
@@ -175,5 +177,3 @@ Suggestions for improving the app:
 ## Acknowledgments
 
 Thanks to the [OMDb API](http://www.omdbapi.com/) for providing movie data.
-
-![Alt Text](./src/assets/images/app-screenshots.gif)

@@ -2,16 +2,17 @@
 
 Welcome to my React projects repository!
 
-## **Featured Projects**
+<!-- ## Summary -->
 
-> [![The Wild Oasis](https://img.shields.io/badge/The_Wild_Oasis-🔗-666?style=flat-square&logo=react)](https://github.com/ksachin7/react-practices/tree/main/the-wild-oasis) [![Netlify Status](https://img.shields.io/badge/Netlify-Deployment-brightgreen?style=flat-square&logo=netlify)](https://the-wild-oasis-1ef4a.netlify.app)  
-The Wild Oasis is a comprehensive hotel management application built using React. It aims to provide a seamless experience for both hotel administrators and guests by offering features for managing bookings, cabins, guests, and more. The application prioritizes user authentication, efficient cabin and booking management, insightful dashboard analytics, and customization options.
+This repository contains a series of practice projects developed with React to explore and demonstrate different aspects of React development. Key projects in this repository include:
 
-> [![Movies](https://img.shields.io/badge/Movies-🔗-666?style=flat-square&logo=react)](https://github.com/ksachin7/react-practices/tree/main/movies) [![Netlify Status](https://img.shields.io/badge/Netlify-Deployment-brightgreen?style=flat-square&logo=netlify)](https://movies-02bf70.netlify.app)  
-This is a Movie Search App created using React. Users can search for movies, view movie details, and add movies to a watchlist. It leverages the OMDb API to fetch movie data.
-  
-> [![UI Fundamentals](https://img.shields.io/badge/UI_Fundamentals-🔗-666?style=flat-square&logo=react)](https://github.com/ksachin7/react-practices/tree/main/ui-fundamentals) [![Netlify Status](https://img.shields.io/badge/Netlify-Deployment-brightgreen?style=flat-square&logo=netlify)](https://elegantwebui.netlify.app)
-This project aimed to develop reusable UI components using React and styled-components with support for dark mode. Additionally, unit testing and CI/CD implementation were carried out as part of the project.
+1. **The Wild Oasis**: A hotel management application that features user authentication, cabin and booking management, dashboard analytics, and customization options. It aims to provide a comprehensive solution for both hotel administrators and guests.
+
+2. **Movies**: A Movie Search App that enables users to search for movies, view details, and maintain a watchlist. It utilizes the OMDb API for movie data retrieval.
+
+3. **UI Fundamentals**: A project focused on building reusable UI components with React and styled-components, including support for dark mode. This project also emphasizes unit testing and CI/CD practices to ensure high-quality, maintainable code.
+
+These practice projects are designed to showcase and refine various React skills and techniques.
 
 ## **Tools & Technologies**  
 
